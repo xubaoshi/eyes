@@ -1,4 +1,4 @@
-# 爱眼康
+# 说明
 
 ## 编辑器
 
@@ -16,14 +16,14 @@ setting.json 配置
 
 ``` json
 "files.associations": {
-　　"*.vue": "vue",
-　　"*.wpy": "vue",
-　　"*.wxml": "html",
-　　"*.wxss": "css"
+    "*.vue": "vue",
+    "*.wpy": "vue",
+    "*.wxml": "html",
+    "*.wxss": "css"
 },
 "emmet.syntaxProfiles": {
-　　"vue-html": "html",
-　　"vue": "html"
+    "vue-html": "html",
+    "vue": "html"
 }
 ```
 

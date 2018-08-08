@@ -27,7 +27,7 @@ export default class extends wepy.app {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
+      navigationBarTitleText: '爱眼康',
       navigationBarTextStyle: 'black'
     }
   }
@@ -39,24 +39,25 @@ export default class extends wepy.app {
   constructor () {
     super()
     this.use('requestfix')
+    this.use('promisify')
   }
 
-  onLaunch() {
-    this.testAsync()
-  }
+  // onLaunch() {
+  //   this.testAsync()
+  // }
 
-  sleep (s) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve('promise resolved')
-      }, s * 1000)
-    })
-  }
+  // sleep (s) {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve('promise resolved')
+  //     }, s * 1000)
+  //   })
+  // }
 
-  async testAsync () {
-    const data = await this.sleep(3)
-    console.log(data)
-  }
+  // async testAsync () {
+  //   const data = await this.sleep(3)
+  //   console.log(data)
+  // }
 
   getUserInfo(cb) {
     const that = this
@@ -69,6 +70,10 @@ export default class extends wepy.app {
         cb && cb(res.userInfo)
       }
     })
+    // wepy.getUserInfo().then((res) => {
+    //     that.globalData.userInfo = res.userInfo
+    //     cb && cb(res.userInfo)
+    // })
   }
 }
 </script>

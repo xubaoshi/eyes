@@ -1,13 +1,15 @@
 {
-  "description": "love eyes",
-  "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "postcss": false,
-    "minified": false
-  },
-  "compileType": "miniprogram",
-  "appid": "touristappid",
-  "projectname": "eyes",
-  "miniprogramRoot": "./dist"
+	"description": "love eyes",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wxd5068539245e8fee",
+	"projectname": "eyes",
+	"miniprogramRoot": "./dist",
+	"condition": {}
 }

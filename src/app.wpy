@@ -1,79 +1,109 @@
-<style lang="less">
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-</style>
+<style lang="less" src="./styles/weui.scss"></style>
+<style lang="less" src="./styles/base.scss"></style>
 
 <script>
-import wepy from 'wepy'
-import 'wepy-async-function'
-
-import { setStore } from 'wepy-redux'
-import configStore from './store'
-
-const store = configStore()
-setStore(store)
-
-export default class extends wepy.app {
-  config = {
-    pages: [
-      'pages/index'
-    ],
-    window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '爱眼康',
-      navigationBarTextStyle: 'black'
+  import wepy from 'wepy'
+  import 'wepy-async-function'
+  import {
+    setStore
+  } from 'wepy-redux'
+  import configStore from './store'
+  import wxUtil from '@/utils/wx'
+  const store = configStore()
+  setStore(store)
+  export default class extends wepy.app {
+    globalData = {
+      auth: {},
+      scene: null
     }
-  }
-
-  globalData = {
-    userInfo: null
-  }
-
-  constructor () {
-    super()
-    this.use('requestfix')
-    this.use('promisify')
-  }
-
-  // onLaunch() {
-  //   this.testAsync()
-  // }
-
-  // sleep (s) {
-  //   return new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       resolve('promise resolved')
-  //     }, s * 1000)
-  //   })
-  // }
-
-  // async testAsync () {
-  //   const data = await this.sleep(3)
-  //   console.log(data)
-  // }
-
-  getUserInfo(cb) {
-    const that = this
-    if (this.globalData.userInfo) {
-      return this.globalData.userInfo
-    }
-    wepy.getUserInfo({
-      success (res) {
-        that.globalData.userInfo = res.userInfo
-        cb && cb(res.userInfo)
+    config = {
+      pages: [
+        'pages/index'
+      ],
+      window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationBarTitleText: '爱眼康',
+        navigationBarTextStyle: 'black'
       }
-    })
-    // wepy.getUserInfo().then((res) => {
-    //     that.globalData.userInfo = res.userInfo
-    //     cb && cb(res.userInfo)
-    // })
+    }
+    constructor() {
+      super()
+      this.use('requestfix')
+      this.use('promisify')
+      // 请求添加 header
+      this.intercept('request', {
+        config(p) {
+          p.header = this.createAuthHeader()
+        }
+      })
+      // 上传附件添加 header
+      this.intercept('uploadFile', {
+        config(p) {
+          p.header = this.createAuthHeader()
+          return p
+        },
+        success(p) {
+          return p.data
+        }
+      })
+    }
+    createAuthHeader() {
+      const loginCode = wepy.$instance.globalData.auth.login_code
+      const header = {}
+      if (loginCode) {
+        header['login_code'] = loginCode
+      }
+      return header
+    }
+    onLaunch(param) {
+      // 检查微信版本
+      wxUtil.checkSDK()
+      // 获取第三方平台自定义的数据字段的同步接口
+      const ext = wepy.getExtConfigSync()
+      console.log('[ext init ext data]', ext)
+      if (ext.globalConfig) {
+        console.log('[ext] init ext global config data', ext.globalConfig)
+        Object.assign(ext, ext.globalConfig)
+      }
+      Object.assign(wepy.$instance.globalData, ext)
+      // 同步权限数据
+      this.syncStoreConfig('login_code')
+      this.syncStoreConfig('third_session')
+      this.syncStoreConfig('user')
+      // 获取保存场景值
+      if (param && param.scene) {
+        console.info('[scene]onLaunch scene', param.scene)
+        wepy.$instance.globalData.scene = param.scene
+        console.info('[scene]onLaunch end')
+      }
+    }
+    syncStoreConfig(key) {
+      try {
+        const value = wepy.getStorageSync(key)
+        if (value !== '') {
+          console.log(`[auth]${key} sync success`)
+          wepy.$instance.globalData.auth[key] = value
+        }
+      } catch (e) {
+        console.warn(`[auth]${key} sync fail `)
+      }
+    }
+    getUserInfo(cb) {
+      const that = this
+      if (this.globalData.userInfo) {
+        return this.globalData.userInfo
+      }
+      wepy.getUserInfo({
+        success(res) {
+          that.globalData.userInfo = res.userInfo
+          cb && cb(res.userInfo)
+        }
+      })
+      // wepy.getUserInfo().then((res) => {
+      //     that.globalData.userInfo = res.userInfo
+      //     cb && cb(res.userInfo)
+      // })
+    }
   }
-}
 </script>

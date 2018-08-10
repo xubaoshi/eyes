@@ -35,7 +35,7 @@ setting.json 配置
 "vetur.validation.template": false,
 ```
 
-## 注意事项
+## Q&A
 
 ### 微信小程序在手机上只有打开调试模式的时候才显示界面
 

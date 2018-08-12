@@ -1,5 +1,5 @@
-<style lang="less" src="./styles/weui.scss"></style>
-<style lang="less" src="./styles/base.scss"></style>
+<style lang="less" src="./styles/weui.less"></style>
+<style lang="less" src="./styles/base.less"></style>
 
 <script>
   import wepy from 'wepy'
@@ -18,7 +18,10 @@
     }
     config = {
       pages: [
-        'pages/index'
+        'pages/patient/index',
+        'pages/index',
+        'pages/doctor/index',
+        'pages/seller/index'
       ],
       window: {
         backgroundTextStyle: 'light',
@@ -100,10 +103,6 @@
           cb && cb(res.userInfo)
         }
       })
-      // wepy.getUserInfo().then((res) => {
-      //     that.globalData.userInfo = res.userInfo
-      //     cb && cb(res.userInfo)
-      // })
     }
   }
 </script>

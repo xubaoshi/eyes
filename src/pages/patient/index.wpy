@@ -2,13 +2,18 @@
   import wepy from 'wepy'
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '首页'
+      navigationBarTitleText: '爱眼康'
+    }
+    onLoad() {
+      console.log('this is home page')
     }
   }
 </script>
 
 <template>
-
+  <view>
+    this is patient home page
+  </view>
 </template>
 
 <style lang="less" scoped>

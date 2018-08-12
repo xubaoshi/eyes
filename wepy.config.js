@@ -6,15 +6,9 @@ module.exports = {
   eslint: true,
   cliLogs: !prod,
   build: {
-    // web: {
-    //   htmlTemplate: path.join('src', 'index.template.html'),
-    //   htmlOutput: path.join('web', 'index.html'),
-    //   jsOutput: path.join('web', 'index.js')
-    // }
   },
   resolve: {
     alias: {
-      counter: path.join(__dirname, 'src/components/counter'),
       '@': path.join(__dirname, 'src')
     },
     aliasFields: ['wepy', 'weapp'],
@@ -24,9 +18,6 @@ module.exports = {
     less: {
       compress: prod
     },
-    /*sass: {
-      outputStyle: 'compressed'
-    },*/
     babel: {
       sourceMap: true,
       presets: [
@@ -36,7 +27,7 @@ module.exports = {
         'transform-class-properties',
         'transform-decorators-legacy',
         'transform-object-rest-spread',
-        'transform-export-extensions',
+        'transform-export-extensions'
       ]
     }
   },
@@ -48,10 +39,6 @@ module.exports = {
 }
 
 if (prod) {
-
-  // 压缩sass
-  // module.exports.compilers['sass'] = {outputStyle: 'compressed'}
-
   // 压缩js
   module.exports.plugins = {
     uglifyjs: {

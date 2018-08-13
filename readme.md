@@ -69,6 +69,11 @@ setting.json 配置
 "vetur.validation.template": false,
 ```
 
+## 小程序调试
+
+下载 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)  
+clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ,打开微信开发者工具，选择小程序，将路径指定到项目代码即可
+
 ## Q&A
 
 ### 1.微信小程序在手机上只有打开调试模式的时候才显示界面

@@ -1,4 +1,17 @@
-# 说明
+# 项目说明
+
+## 小程序框架及 UI 库
+
+### 框架
+
+[wepy](https://tencent.github.io/wepy/document.html#/?id=%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97)
+
+### UI 库
+
+- [zanui](https://youzan.github.io/vant-weapp)
+- [zanui(wepy 版本 )](https://github.com/brucx/wepy-zanui-demo)
+- [weui(wepy 版本)](https://github.com/wepyjs/wepy-weui-demo)
+- [wux](https://github.com/wux-weapp/wux-weapp)
 
 ## 编辑器
 

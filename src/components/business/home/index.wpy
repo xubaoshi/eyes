@@ -1,15 +1,87 @@
 <script>
   import wepy from 'wepy'
+  import customSwiper from '@/components/common/swiper'
   export default class ConsultIndex extends wepy.component {
+    components = {
+      customSwiper
+    }
+    data = {
+      imgUrls: [
+        'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+        'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+        'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+      ]
+    }
+    methods = {}
   }
 </script>
 
 <template>
   <view>
-    this is home
+    <customSwiper :imgUrls.sync='imgUrls' />
+    <view class='quick-list'>
+      <view class='quick-item'>
+        <view class='item-icon bk-g'></view>
+        <view class='item-des'>
+          <view class='item-tit txt'>快速咨询</view>
+          <view class='item-tit-sub txt'>专业眼科医生为您答疑解惑</view>
+        </view>
+      </view>
+      <view class='quick-item'>
+        <view class='item-icon bk-y'></view>
+        <view class='item-des'>
+          <view class='item-tit txt'>找医生</view>
+          <view class='item-tit-sub txt'>搜索全国眼科名医 对症咨询</view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
-<style lang="less" scoped>
-
+<style lang='less' scoped>
+  .quick-list {
+    margin-bottom: 16rpx;
+    background-color: #ffffff;
+    padding-left: 32rpx;
+    .quick-item {
+      padding: 32rpx 0;
+      border-bottom: 1rpx solid #e5e5e5;
+      .item-icon {
+        display: inline-block;
+        margin-right: 32rpx;
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+      .item-des {
+        display: inline-block;
+        position: relative;
+        vertical-align: top;
+        padding-top: 12rpx;
+        .item-tit {
+          font-size: 40rpx;
+          line-height: 56rpx;
+        }
+        .item-tit-sub {
+          display: inline-block;
+          font-size: 28rpx;
+          line-height: 40rpx;
+        }
+      }
+    }
+    .bk-g {
+      background-image: linear-gradient(-180deg, #0ED6C2 0%, #15C4A6 100%);
+    }
+    .bk-y {
+      background-image: linear-gradient(-180deg, #FF9E4D 4%, #FC8E32 100%);
+    }
+    .txt {
+      font-family: PingFangSC-Medium;
+      color: #222222;
+      letter-spacing: 0;
+    }
+  }
 </style>

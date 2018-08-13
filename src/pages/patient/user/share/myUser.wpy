@@ -1,0 +1,21 @@
+<script>
+  import wepy from 'wepy'
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '我发展的用户'
+    }
+    onLoad() {
+      console.log('this is my user page')
+    }
+  }
+</script>
+
+<template>
+  <view>
+    this is patient share home page
+  </view>
+</template>
+
+<style lang="less" scoped>
+
+</style>

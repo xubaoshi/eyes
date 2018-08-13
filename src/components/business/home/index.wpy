@@ -1,0 +1,15 @@
+<script>
+  import wepy from 'wepy'
+  export default class ConsultIndex extends wepy.component {
+  }
+</script>
+
+<template>
+  <view>
+    this is home
+  </view>
+</template>
+
+<style lang="less" scoped>
+
+</style>

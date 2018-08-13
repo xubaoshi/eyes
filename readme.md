@@ -71,12 +71,16 @@ setting.json 配置
 
 ## Q&A
 
-### 微信小程序在手机上只有打开调试模式的时候才显示界面
+### 1.微信小程序在手机上只有打开调试模式的时候才显示界面
 
 服务器的域名没有设置   [参考链接](https://blog.csdn.net/wzlhlhhh/article/details/80512100)
 
-### 获取 openId ，sessionKey , unionId
+### 2.获取 openId ，sessionKey , unionId
 
 调用 `wepy.login()` 获取 code , 调用后端借口传递 code 获取
 
-### 小程序中的图片要用绝对路径否则无法显示
+### 3.小程序中的图片要用绝对路径否则无法显示
+
+### 4.微信开发者工具中缓存无法清除
+
+使用 `yarn run clean` 或 `npm run clean`, windows 系统下在 cmd 中命令是失效的，请打开 git bash 执行该命令

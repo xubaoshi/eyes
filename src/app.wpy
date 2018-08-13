@@ -1,5 +1,14 @@
-<style lang="less" src="./styles/weui.less"></style>
-<style lang="less" src="./styles/base.less"></style>
+<style lang="less" src="./styles/weui.less">
+
+</style>
+
+<style lang="less" src="./styles/base.less">
+
+</style>
+
+<style lang="less" src="./styles/icons.less">
+
+</style>
 
 <script>
   import wepy from 'wepy'
@@ -18,16 +27,14 @@
     }
     config = {
       pages: [
-        'pages/patient/index',
-        'pages/index',
-        'pages/doctor/index',
-        'pages/seller/index'
+        'pages/patient/index'
       ],
       window: {
         backgroundTextStyle: 'light',
-        navigationBarBackgroundColor: '#fff',
+        navigationBarBackgroundColor: '#ffffff',
         navigationBarTitleText: '爱眼康',
-        navigationBarTextStyle: 'black'
+        navigationBarTextStyle: 'black',
+        backgroundColor: '#f7f7fA'
       }
     }
     constructor() {

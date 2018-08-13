@@ -1,18 +1,68 @@
 <script>
   import wepy from 'wepy'
+  import tabBar from '@/components/common/tabBar'
+  import home from '@/components/business/home/index'
+  import consult from '@/components/business/consult/index'
+  import user from '@/components/business/user/index'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '爱眼康'
     }
-    onLoad() {
-      console.log('this is home page')
+    components = {
+      tabBar,
+      home,
+      consult,
+      user
+    }
+    data = {
+      currentIndex: 0,
+      tabBars: [{
+        current: 1,
+        pagePath: '/pages/patient/home/index',
+        iconClass: 'icon-home',
+        text: '爱眼康'
+      }, {
+        current: 0,
+        pagePath: '/pages/patient/consult/index',
+        iconClass: 'icon-message',
+        text: '我的咨询'
+      }, {
+        current: 0,
+        pagePath: '/pages/patient/home/index',
+        iconClass: 'icon-shop',
+        isOutFlag: 1,
+        text: '在线商城'
+      }, {
+        current: 0,
+        pagePath: '/pages/patient/user/index',
+        iconClass: 'icon-user',
+        text: '个人中心'
+      }]
+    }
+    methods = {
+      handleTabChange(currentIndex) {
+        this.tabBars.forEach((item, index) => {
+          if (currentIndex === index) {
+            item.current = 1
+          } else {
+            item.current = 0
+          }
+        })
+        this.currentIndex = currentIndex
+        this.$apply()
+      }
     }
   }
 </script>
 
 <template>
   <view>
-    this is patient home page
+    <home wx:if='{{currentIndex === 0}}' />
+    <consult wx:elif='{{currentIndex === 1}}' />
+    <home wx:elif='{{currentIndex === 2}}' />
+    <user wx:elif='{{currentIndex === 3}}' />
+    <home wx:else='{{currentIndex === 0}}' />
+    <tabBar :tabBars.sync='tabBars' @change.user='handleTabChange' />
   </view>
 </template>
 

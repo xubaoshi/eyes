@@ -13,6 +13,27 @@
 - [weui(wepy 版本)](https://github.com/wepyjs/wepy-weui-demo)
 - [wux](https://github.com/wux-weapp/wux-weapp)
 
+## 页面配置
+
+`src/app.wpy` pages 配置小程序中涉及的页面，其中 ** 数组的第一项代表小程序的初始页面（首页）**
+
+``` javascript
+    config = {
+      pages: [
+        'pages/patient/index',
+        'pages/index',
+        'pages/doctor/index',
+        'pages/seller/index'
+      ],
+      window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationBarTitleText: '爱眼康',
+        navigationBarTextStyle: 'black'
+      }
+    }
+```
+
 ## 编辑器
 
 ### vscode

@@ -1,5 +1,13 @@
 <script>
   import wepy from 'wepy'
+  import {
+    connect
+  } from 'wepy-redux'
+  import store from '@/store/utils'
+  import auth from '@/api/auth'
+  import wxUtils from '@/utils/wx'
+  import lang from '@/utils/lang'
+
   import tabBar from '@/components/common/tabBar'
   import home from '@/components/business/home/index'
   import consult from '@/components/business/consult/index'
@@ -38,6 +46,14 @@
         iconClass: 'icon-user',
         text: '个人中心'
       }]
+    }
+    async onLoad() {
+      // 登录检查
+      await auth.login()
+      // 初始化状态
+      await store.init()
+      
+
     }
     methods = {
       handleTabChange(currentIndex) {

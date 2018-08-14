@@ -23,7 +23,11 @@ export default class Pagination {
     // 是否需要清除
     this.toClear = false
     // 全部数量
-    this.totalCount = 0
+    this.records = 0
+    // 页数
+    this.pages = 0
+    // 当前页数
+    this.pageNo = 0
   }
 
   /**
@@ -44,7 +48,7 @@ export default class Pagination {
       Object.assign(param, args)
       const data = await http.get(this.url, param)
       // 底部判断
-      if (data === null || data.length < 1) {
+      if (data === null || data.data.length < 1) {
         if (this.toClear) {
           this.clear()
         } else {
@@ -54,18 +58,21 @@ export default class Pagination {
       }
       this.empty = false
       // 处理数据
-      this._processData(data)
+      this._processData(data.data)
       // 设置数据
       if (this.toClear) {
         this.list = data
         this.toClear = false
       } else {
-        this.list = this.list.concat(data)
+        this.list = this.list.concat(data.data)
       }
       this.start += this.count
       if (data.length < this.count) {
         this.reachBottom = true
       }
+      this.records = data.records
+      this.pages = data.pages
+      this.pageNo = data.pageNo
       return this
     } finally {
       this.loading = false

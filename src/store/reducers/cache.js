@@ -10,5 +10,6 @@ export default handleActions({
     }
   }
 }, {
-
+  home: null,
+  evaluate: null
 })

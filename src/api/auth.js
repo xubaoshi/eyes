@@ -2,6 +2,7 @@ import base from './base'
 import wepy from 'wepy'
 import store from '../store/utils'
 import WxUtils from '../utils/wx'
+import { patientApi } from '@/config'
 
 /**
  * 权限服务类
@@ -40,8 +41,6 @@ export default class auth extends base {
       await this.doLogin()
       // 获取用户信息
       const rawUser = userInfo != null ? userInfo : await wepy.getUserInfo()
-      // 检查是否通过
-      // await this.checkUserInfo(rawUser)
       // 解密信息
       const { user } = await this.decodeUserInfo(rawUser)
       // 保存登录信息
@@ -63,24 +62,10 @@ export default class auth extends base {
   }
 
   /**
-   * 服务端检查数据完整性
-   */
-  static async checkUserInfo(rawUser) {
-    const url = `${this.baseUrl}/auth/check_userinfo`
-    const param = {
-      rawData: rawUser.rawData,
-      signature: rawUser.signature,
-      thirdSession: this.getConfig('third_session'),
-      app_code: this.getShopCode()
-    }
-    return await this.get(url, param)
-  }
-
-  /**
    * 服务端解密用户信息
    */
   static async decodeUserInfo(rawUser) {
-    const url = `${this.baseUrl}/auth/decode_userinfo`
+    const url = `${this.baseUrl}${patientApi.auth.decodeUserInfo}`
     const param = {
       encryptedData: rawUser.encryptedData,
       iv: rawUser.iv,
@@ -95,7 +80,8 @@ export default class auth extends base {
    */
   static async doLogin() {
     const { code } = await wepy.login()
-    const { third_session, login_code } = await this.session(code)
+    const res = await this.session(code)
+    const { third_session, login_code } = res.data
     await this.setConfig('login_code', login_code)
     await this.setConfig('third_session', third_session)
     await this.login()
@@ -105,10 +91,7 @@ export default class auth extends base {
    * 获取会话
    */
   static async session(jsCode) {
-    const shopCode = wepy.$instance.globalData.appCode
-    const url = `${
-      this.baseUrl
-    }/auth/session?code=${jsCode}&app_code=${shopCode}`
+    const url = `${this.baseUrl}${patientApi.auth.session}?code=${jsCode}`
     return await this.get(url)
   }
 
@@ -116,16 +99,11 @@ export default class auth extends base {
    * 检查登录情况
    */
   static async checkLoginCode(loginCode) {
-    const url = `${this.baseUrl}/auth/check_session?login_code=${loginCode}`
+    const url = `${this.baseUrl}${
+      patientApi.auth.checkSession
+    }?login_code=${loginCode}`
     const data = await this.get(url)
     return data.result
-  }
-
-  /**
-   * 获取店铺标识符
-   */
-  static getShopCode() {
-    return wepy.$instance.globalData.appCode
   }
 
   /**

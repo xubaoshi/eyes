@@ -1,5 +1,4 @@
-var prod = process.env.NODE_ENV === 'production'
-export const domainName = prod ? '' : ' https://www.easy-mock.com/mock/5b719f05ebd4a208cce29bb8'
+export const baseUrl = 'https://www.easy-mock.com/mock/5b719f05ebd4a208cce29bb8'
 
 // 患者接口
 export const patientApi = {
@@ -8,5 +7,10 @@ export const patientApi = {
   },
   banner: {
     list: '/api/banner/list' // 首页 banner 列表
+  },
+  auth: {
+    session: '/api/auth/session', // 登录操作获取 third_session 及 login_code
+    checkSession: '/api/auth/check_session', // 校验 session 是否生效
+    decodeUserinfo: '/api/auth/decode_userinfo' // wepy.getUserInfo() 返回值的解码
   }
 }

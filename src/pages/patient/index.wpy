@@ -4,7 +4,8 @@
   //   connect
   // } from 'wepy-redux'
   import store from '@/store/utils'
-  import auth from '@/api/auth'
+  import authService from '@/api/auth'
+  import homeService from '@/api/home'
   // import wxUtils from '@/utils/wx'
   // import lang from '@/utils/lang'
   import base from '@/mixins/base'
@@ -46,11 +47,12 @@
     }
     async onLoad() {
       // 登录检查
-      await auth.login()
+      await authService.login()
       // 初始化状态
       await store.init()
       // 获取 banner
       // 获取 患者评价 截取前5条
+      await homeService.info()
     }
     methods = {
       handleTabChange(currentIndex) {

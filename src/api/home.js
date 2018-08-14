@@ -1,10 +1,26 @@
 // 首页
 import base from './base'
-import { domianName, patientApi } from '@/config'
+import { patientApi } from '@/config'
+import evaluate from './evaluate'
+import store from '@/store/utils'
+import lang from '@/utils/lang'
 
 export default class home extends base {
-  async bannerList(param) {
-    const url = `${domianName}${patientApi.banner.list}`
+  static async info() {
+    return Promise.all([this.bannerList(), evaluate.list().next()]).then(
+      ([bannerList, evaluateList]) => {
+        store.save('home', {
+          bannerList
+        })
+        store.save('evaluate', {
+          list: evaluateList
+        })
+        return true
+      }
+    )
+  }
+  static async bannerList(param) {
+    const url = `${this.baseUrl}${patientApi.banner.list}`
     return this.get(url, param)
   }
 }

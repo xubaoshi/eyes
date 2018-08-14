@@ -47,6 +47,8 @@
       this.intercept('request', {
         config(p) {
           p.header = this.createAuthHeader()
+          p.header['content-type'] = 'application/json'
+          return p;
         }
       })
       // 上传附件添加 header

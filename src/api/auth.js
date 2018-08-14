@@ -80,8 +80,7 @@ export default class auth extends base {
    */
   static async doLogin() {
     const { code } = await wepy.login()
-    const res = await this.session(code)
-    const { third_session, login_code } = res.data
+    const { third_session, login_code } = await this.session(code)
     await this.setConfig('login_code', login_code)
     await this.setConfig('third_session', third_session)
     await this.login()

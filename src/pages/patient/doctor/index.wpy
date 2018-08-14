@@ -5,6 +5,7 @@
       navigationBarTitleText: '找专家'
     }
     onLoad() {
+      console.log('this is doctor search page')
     }
   }
 </script>

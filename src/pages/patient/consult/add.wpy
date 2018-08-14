@@ -1,8 +1,19 @@
 <script>
   import wepy from 'wepy'
+  import zanField from '@/components/zanui/zan-field'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '快速咨询'
+    }
+    components = {
+      zanField
+    }
+    data = {
+      notitle: {
+        placeholder: '请详细描述您的症状和身体状况，便于医生进行准确分析、我们会确保您的隐私安全。（请输入10~500字）',
+        componentId: 'textarea:text',
+        type: 'textarea'
+      }
     }
     onLoad() {
       console.log('this is home page')
@@ -11,11 +22,22 @@
 </script>
 
 <template>
-  <view>
-    this is patient consult add page
+  <view class="zan-panel">
+    <zanField class='content' :options="notitle" componentId="zanField" />
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  @import '../../../styles/zanui/panel';
+  @import '../../../styles/zanui/cell';
+  .zan-panel {
+    margin: -1rpx;
+    .content {
+      width: 100%;
+    }
+    textarea {
+      width: 100%;
+      min-height: 200rpx;
+    }
+  }
 </style>

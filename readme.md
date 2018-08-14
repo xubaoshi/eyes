@@ -69,6 +69,10 @@ setting.json 配置
 "vetur.validation.template": false,
 ```
 
+## Mock 数据
+
+该项目使用 [easy-mock](https://www.easy-mock.com/project/5b719f05ebd4a208cce29bb8) 进行数据的模拟
+
 ## 小程序调试
 
 下载 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)  

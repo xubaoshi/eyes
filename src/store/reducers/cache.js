@@ -10,6 +10,6 @@ export default handleActions({
     }
   }
 }, {
-  home: null,
-  evaluate: null
+  home: null, // 首页
+  evaluate: null // 患者评价
 })

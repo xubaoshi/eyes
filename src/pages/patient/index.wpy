@@ -1,12 +1,12 @@
 <script>
   import wepy from 'wepy'
-  import {
-    connect
-  } from 'wepy-redux'
+  // import {
+  //   connect
+  // } from 'wepy-redux'
   import store from '@/store/utils'
   import auth from '@/api/auth'
-  import wxUtils from '@/utils/wx'
-  import lang from '@/utils/lang'
+  // import wxUtils from '@/utils/wx'
+  // import lang from '@/utils/lang'
   import base from '@/mixins/base'
   import tabBar from '@/components/common/tabBar'
   import home from '@/components/business/home/index'
@@ -24,23 +24,23 @@
       tabBars: [{
         current: 1,
         pagePath: '/pages/patient/home/index',
-        iconClass: 'icon-home',
+        iconClass: 'icon-shouye',
         text: '爱眼康'
       }, {
         current: 0,
         pagePath: '/pages/patient/consult/index',
-        iconClass: 'icon-message',
+        iconClass: 'icon-zaixianzixun',
         text: '我的咨询'
       }, {
         current: 0,
         pagePath: '/pages/patient/home/index',
-        iconClass: 'icon-shop',
+        iconClass: 'icon-shangcheng2',
         isOutFlag: 1,
         text: '在线商城'
       }, {
         current: 0,
         pagePath: '/pages/patient/user/index',
-        iconClass: 'icon-user',
+        iconClass: 'icon-wode-active',
         text: '个人中心'
       }]
     }
@@ -51,7 +51,6 @@
       await store.init()
       // 获取 banner
       // 获取 患者评价 截取前5条
-      
     }
     methods = {
       handleTabChange(currentIndex) {

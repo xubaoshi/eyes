@@ -2,17 +2,16 @@
   import wepy from 'wepy'
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '快速咨询'
+      navigationBarTitleText: '找专家'
     }
     onLoad() {
-      console.log('this is home page')
     }
   }
 </script>
 
 <template>
   <view>
-    this is patient consult pay page
+    this is patient doctor find page
   </view>
 </template>
 

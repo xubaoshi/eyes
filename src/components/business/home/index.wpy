@@ -12,7 +12,18 @@
         'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
       ]
     }
-    methods = {}
+    methods = {
+      handleGoCon() {
+        wepy.navigateTo({
+          url: '/pages/patient/consult/add'
+        })
+      },
+      handleGoDoc() {
+        wepy.navigateTo({
+          url: '/pages/patient/doctor/index'
+        })
+      }
+    }
   }
 </script>
 
@@ -20,19 +31,25 @@
   <view>
     <customSwiper :imgUrls.sync='imgUrls' />
     <view class='quick-list'>
-      <view class='quick-item'>
-        <view class='item-icon bk-g'></view>
+      <view class='quick-item'  @tap='handleGoCon'>
+        <view class='item-icon bk-g'>
+          <text class='iconfont  icon-zixun'></text>
+        </view>
         <view class='item-des'>
           <view class='item-tit txt'>快速咨询</view>
           <view class='item-tit-sub txt'>专业眼科医生为您答疑解惑</view>
         </view>
+        <text class='iconfont  icon-zhankai arrow'></text>
       </view>
-      <view class='quick-item'>
-        <view class='item-icon bk-y'></view>
+      <view class='quick-item' @tap='handleGoDoc'>
+        <view class='item-icon bk-y'>
+          <text class='iconfont icon-search-2-copy'></text>
+        </view>
         <view class='item-des'>
           <view class='item-tit txt'>找医生</view>
           <view class='item-tit-sub txt'>搜索全国眼科名医 对症咨询</view>
         </view>
+        <text class='iconfont  icon-zhankai arrow'></text>
       </view>
     </view>
   </view>
@@ -44,21 +61,29 @@
     background-color: #ffffff;
     padding-left: 32rpx;
     .quick-item {
+      position: relative;
+      display: flex;
+      flex-direction: row;
       padding: 32rpx 0;
       border-bottom: 1rpx solid #e5e5e5;
       .item-icon {
-        display: inline-block;
+        display: flex;
+        flex-direction: column;
         margin-right: 32rpx;
         width: 120rpx;
         height: 120rpx;
         border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        .iconfont {
+          font-size: 75rpx;
+          color: #ffffff;
+        }
       }
       &:last-child {
         border-bottom: 0;
       }
       .item-des {
-        display: inline-block;
-        position: relative;
         vertical-align: top;
         padding-top: 12rpx;
         .item-tit {
@@ -70,6 +95,15 @@
           font-size: 28rpx;
           line-height: 40rpx;
         }
+      }
+      .arrow {
+        position: absolute;
+        right: 32rpx;
+        bottom: 50%;
+        margin-bottom: -13rpx;
+        font-size: 26rpx;
+        color: #c7c7c7;
+        font-weight: bold;
       }
     }
     .bk-g {

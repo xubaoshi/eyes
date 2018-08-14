@@ -29,8 +29,7 @@
 
 <style lang="less" scoped>
   .icon {
-    width: 54rpx;
-    height: 54rpx;
+    font-size: 40rpx;
     color: #AAABAD;
   }
   .tabBar {
@@ -52,7 +51,7 @@
   }
 
   .tabBartext {
-    font-size: 20rpx;
+    font-size: 28rpx;
   }
   
   /*当前字体颜色*/

@@ -3,7 +3,6 @@ import base from './base'
 import { patientApi } from '@/config'
 import evaluate from './evaluate'
 import store from '@/store/utils'
-import lang from '@/utils/lang'
 
 export default class home extends base {
   static async info() {

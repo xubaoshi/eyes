@@ -1,16 +1,34 @@
 <script>
   import wepy from 'wepy'
+  import {
+    connect
+  } from 'wepy-redux'
   import customSwiper from '@/components/common/swiper'
+  import lang from '@/utils/lang'
+  import store from '@/store/utils'
+  @connect({
+    home: store.get('home'),
+    evaluate: store.get('evaluate')
+  })
   export default class ConsultIndex extends wepy.component {
     components = {
       customSwiper
     }
     data = {
-      bannerUrls: [
-        'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-      ]
+      // bannerUrls: [
+      //   'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+      //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+      //   'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+      // ]
+    }
+    computed = {
+      bannerUrls() {
+        if (lang.isEmpty(this.home) || lang.isEmpty(this.home.bannerList)) {
+          return []
+        } else {
+          return this.home.bannerList
+        }
+      }
     }
     methods = {
       handleGoCon() {
@@ -31,7 +49,7 @@
   <view>
     <customSwiper :bannerUrls.sync='bannerUrls' />
     <view class='quick-list'>
-      <view class='quick-item'  @tap='handleGoCon'>
+      <view class='quick-item' @tap='handleGoCon'>
         <view class='item-icon bk-g'>
           <text class='iconfont  icon-zixun'></text>
         </view>
@@ -107,10 +125,10 @@
       }
     }
     .bk-g {
-      background-image: linear-gradient(-180deg, #0ED6C2 0%, #15C4A6 100%);
+      background-image: linear-gradient(-180deg, #0ed6c2 0%, #15c4a6 100%);
     }
     .bk-y {
-      background-image: linear-gradient(-180deg, #FF9E4D 4%, #FC8E32 100%);
+      background-image: linear-gradient(-180deg, #ff9e4d 4%, #fc8e32 100%);
     }
     .txt {
       font-family: PingFangSC-Medium;

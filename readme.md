@@ -38,13 +38,13 @@
 
 ### vscode
 
-#### 1.代码格式化
+#### 1. wpy 代码格式化
 
-wpy-beautify
+wpy-beautify（插件）
 
-#### 2.代码高亮
+#### 2. wpy 代码高亮
 
-Vetur
+Vetur（插件）
 
 setting.json 配置
 
@@ -67,6 +67,19 @@ setting.json 配置
 
 ``` json
 "vetur.validation.template": false,
+```
+
+#### 4. js 格式化
+
+prettie（插件）  
+
+.prettierrc 配置 可以使用右键格式化代码
+
+``` javascript
+{
+  "singleQuote": true,
+  "semi": false
+}
 ```
 
 ## Mock 数据

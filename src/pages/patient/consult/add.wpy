@@ -18,14 +18,16 @@
         if (content.length < 10) {
           tips.modal('咨询内容至少输入10个字')
         } else {
-          wepy.setStorage({
-            consult: {
-              content,
-              uploadFileList: this.uploadFileList
-            }
+          const str = JSON.stringify({
+            content: content,
+            uploadFileList: this.uploadFileList
           })
-          wepy.navigeteTo({
-            url: '/pages/patient/consulter/list'
+          wepy.setStorage({
+            key: 'consult',
+            data: str
+          })
+          wepy.navigateTo({
+            url: '/pages/patient/consult/consulter/list'
           })
         }
       },

@@ -8,40 +8,6 @@
 4. 开发模式 `yarn run dev` 或 `npm run dev`  
 5. 发布 `yarn run build` 或 `npm run build`  
 
-## 小程序框架及 UI 库
-
-### 框架
-
-[wepy](https://tencent.github.io/wepy/document.html#/?id=%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97)
-
-### UI 库
-
-- [zanui](https://youzan.github.io/vant-weapp)
-- [zanui(wepy 版本 )](https://github.com/brucx/wepy-zanui-demo)
-- [weui(wepy 版本)](https://github.com/wepyjs/wepy-weui-demo)
-- [wux](https://github.com/wux-weapp/wux-weapp)
-
-## 页面配置
-
-`src/app.wpy` pages 配置小程序中涉及的页面，其中**数组的第一项代表小程序的初始页面首页**
-
-``` javascript
-    config = {
-      pages: [
-        'pages/patient/index',
-        'pages/index',
-        'pages/doctor/index',
-        'pages/seller/index'
-      ],
-      window: {
-        backgroundTextStyle: 'light',
-        navigationBarBackgroundColor: '#fff',
-        navigationBarTitleText: '爱眼康',
-        navigationBarTextStyle: 'black'
-      }
-    }
-```
-
 ## 编辑器
 
 ### vscode
@@ -94,6 +60,39 @@ prettier（插件）
 
 eslint（插件）  
 
+## 小程序框架及 UI 库
+
+### 框架
+
+[wepy](https://tencent.github.io/wepy/document.html#/?id=%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97)
+
+### UI 库
+
+- [zanui](https://youzan.github.io/vant-weapp)
+- [zanui(wepy 版本 )](https://github.com/brucx/wepy-zanui-demo)
+- [weui(wepy 版本)](https://github.com/wepyjs/wepy-weui-demo)
+- [wux](https://github.com/wux-weapp/wux-weapp)
+
+## 页面配置
+
+`src/app.wpy` pages 配置小程序中涉及的页面，其中**数组的第一项代表小程序的初始页面首页**
+
+``` javascript
+    config = {
+      pages: [
+        'pages/patient/index',
+        'pages/index',
+        'pages/doctor/index',
+        'pages/seller/index'
+      ],
+      window: {
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationBarTitleText: '爱眼康',
+        navigationBarTextStyle: 'black'
+      }
+    }
+```
 
 ## Mock 数据
 

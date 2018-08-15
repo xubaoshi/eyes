@@ -1,5 +1,13 @@
 # 项目说明
 
+## 运行项目
+
+- 1. `git clone https://github.com/xubaoshi/eyes.git`
+- 2. 切换项目至根目录 执行 `yarn intsall` 或 `npm install` 推荐 yarn ， [安装地址](https://yarnpkg.com/zh-Hans/) 
+- 3. `yarn global add wepy-cli` 或 `npm install -g wepy-cli`
+- 4. 开发模式 `yarn run dev` 或 `npm run dev`
+- 4. 发布 `yarn run build` 或 `npm run build`
+
 ## 小程序框架及 UI 库
 
 ### 框架
@@ -81,6 +89,11 @@ prettier（插件）
   "semi": false
 }
 ```
+
+#### 5. 代码检查工具
+
+eslint（插件）  
+
 
 ## Mock 数据
 

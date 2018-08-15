@@ -27,8 +27,10 @@
     }
     config = {
       pages: [
-        'pages/patient/index',
         'pages/patient/consult/add',
+        'pages/patient/consult/consulter/list',
+        'pages/patient/consult/consulter/add',
+        'pages/patient/index',
         'pages/patient/doctor/index'
       ],
       window: {

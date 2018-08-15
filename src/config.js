@@ -12,5 +12,9 @@ export const patientApi = {
     session: '/api/auth/session', // 登录操作获取 third_session 及 login_code
     checkSession: '/api/auth/check_session', // 校验 session 是否生效
     decodeUserinfo: '/api/auth/decode_userinfo' // wepy.getUserInfo() 返回值的解码
+  },
+  upload: {
+    image: '/api/upload/image',
+    vedio: '/api/upload/vedio'
   }
 }

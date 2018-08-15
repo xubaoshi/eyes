@@ -71,7 +71,7 @@ setting.json 配置
 
 #### 4. js 格式化
 
-prettie（插件）  
+prettier（插件）  
 
 .prettierrc 配置 可以使用右键格式化代码
 

@@ -2,17 +2,17 @@
   import wepy from 'wepy'
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '咨询人信息'
+      navigationBarTitleText: '患者评价'
     }
     onLoad() {
-      console.log('this is home page')
+      console.log('this is doctor search page')
     }
   }
 </script>
 
 <template>
   <view>
-    this is patient consulter add page
+    this is patient doctor evalateList page
   </view>
 </template>
 

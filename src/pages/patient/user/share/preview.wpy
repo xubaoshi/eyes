@@ -1,0 +1,24 @@
+<script>
+  import wepy from 'wepy'
+  import Qrcode from '@/components/wux/qrcode/qrcode';
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的推荐图片'
+    }
+    onLoad() {
+      console.log('this is home page')
+      Qrcode.init('qrcode', `this is home page`);
+    }
+  }
+</script>
+
+<template>
+  <view>
+    this is patient preview home page
+    <canvas  style="width: 200px; height: 200px;" canvas-id="qrcode" wx:if="{{coupon.supportType !=1}}"></canvas>
+  </view>
+</template>
+
+<style lang="less" scoped>
+
+</style>

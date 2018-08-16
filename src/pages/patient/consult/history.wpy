@@ -2,7 +2,7 @@
   import wepy from 'wepy'
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '咨询人信息'
+      navigationBarTitleText: '历史记录'
     }
     onLoad() {
       console.log('this is home page')
@@ -12,7 +12,7 @@
 
 <template>
   <view>
-    this is patient consulter add page
+    this is patient consult history page
   </view>
 </template>
 

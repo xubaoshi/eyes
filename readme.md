@@ -94,6 +94,51 @@ eslint（插件）
     }
 ```
 
+## 页面说明
+
+```
+  // 业务组件
+  --components
+    --business
+        --consult
+          --index.wpy  //咨询标签页首页
+          --radio.wpy  //选择咨询人组件
+        --home
+          --index.wpy  //爱眼康标签页首页
+        --user
+          --index.wpy  //个人中心标签页首页
+  // 业务页面
+  --pages
+    --patient
+        --consult
+            --add.wpy      //快速咨询第一步
+            --pay.wpy      //支付页
+            --history.wpy  //历史记录（tr3）
+            --evaluate.wpy //评价（tr3）
+            --detail.wpy   //详情（tr3）
+            --reply.wpy    //快速回复（tr3）
+            --consulter
+              --add.wpy    //添加咨询人
+              --list.wpy   //选择咨询人
+        --doctor
+            --index.wpy    //找医生（tr3）
+            --detail.wpy   //医生详情（tr3）
+            --evalateList.wpy //医生评价列表（tr3）
+        --user
+            --info.wpy     //个人信息（tr3）
+            --name.wpy     //修改昵称（tr3）
+            --income.wpy   //收入明细（tr3）
+            --cash.wpy     //选择银行（提现）（tr3）
+          --share
+              --index.wpy  //推荐给朋友（tr3）
+              --myUser.wpy //我发展的用户（tr3）
+              --preview.wpy//我的推荐图片（tr3）
+          --consulter
+              --add.wpy    //咨询人信息（tr3）
+              --list.wpy   //咨询人（tr3）
+      --index.wpy          //首页（tr3）
+```
+
 ## Mock 数据
 
 该项目使用 [easy-mock](https://www.easy-mock.com/project/5b719f05ebd4a208cce29bb8) 进行数据的模拟

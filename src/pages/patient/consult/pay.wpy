@@ -2,7 +2,7 @@
   import wepy from 'wepy'
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: '快速咨询'
+      navigationBarTitleText: '支付'
     }
     onLoad() {
       console.log('this is home page')

@@ -183,7 +183,7 @@
     .pics {
       display: flex;
       flex-wrap: wrap;
-     margin-bottom: -200rpx;
+      margin-bottom: -200rpx;
       .upload-item {
         position: relative;
         display: flex;
@@ -192,7 +192,7 @@
         height: 200rpx;
         border: solid 1rpx #cccccc;
       }
-      .upload-item-empty{
+      .upload-item-empty {
         border: none;
         flex: 1 1 100px;
       }

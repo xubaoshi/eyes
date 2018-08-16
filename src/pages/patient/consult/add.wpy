@@ -1,4 +1,5 @@
 <script>
+  /* eslint-disable */ 
   import wepy from 'wepy'
   import zanField from '@/components/zanui/zan-field'
   import zanActionsheet from '@/components/zanui/zan-actionsheet'
@@ -33,52 +34,51 @@
       },
       handleUpload() {
         this.$invoke('zanActionsheet', 'showZanActionsheet', {
-          show: false,
-          closeOnClickOverlay: true,
-          cancelText: false,
-          actions: [
-            {
-              type: 'photo',
-              name: '拍照'
-            },
-            {
-              type: 'image',
-              name: '上传图片'
-            },
-            {
-              type: 'vedio',
-              name: '上传视频'
+            show: false,
+            closeOnClickOverlay: true,
+            cancelText: false,
+            actions: [{
+                type: 'photo',
+                name: '拍照'
+              },
+              {
+                type: 'image',
+                name: '上传图片'
+              },
+              {
+                type: 'vedio',
+                name: '上传视频'
+              }
+            ]
+          }).then(result => {
+            if (result.type === 'photo') {
+              wepy.chooseImage({
+                count: 1,
+                sizeType: ['original', 'compressed'],
+                sourceType: ['camera']
+              }).then((res) => {
+                this.upload(res.tempFilePaths[0], 'image')
+              })
+            } else if (result.type === 'image') {
+              wepy.chooseImage({
+                count: 1,
+                sizeType: ['original', 'compressed'],
+                sourceType: ['album']
+              }).then((res) => {
+                this.upload(res.tempFilePaths[0], 'image')
+              })
+            } else if (result.type === 'vedio') {
+              wepy.chooseVideo({
+                count: 1,
+                maxDuration: 60,
+                camera: 'back',
+                sizeType: ['original', 'compressed']
+              }).then((res) => {
+                this.upload(res.tempFilePath, 'vedio')
+              })
             }
-          ]
-        }).then(result => {
-          if (result.type === 'photo') {
-            wepy.chooseImage({
-              count: 1,
-              sizeType: ['original', 'compressed'],
-              sourceType: ['camera']
-            }).then((res) => {
-              this.upload(res.tempFilePaths[0], 'image')
-            })
-          } else if (result.type === 'image') {
-            wepy.chooseImage({
-              count: 1,
-              sizeType: ['original', 'compressed'],
-              sourceType: ['album']
-            }).then((res) => {
-              this.upload(res.tempFilePaths[0], 'image')
-            })
-          } else if (result.type === 'vedio') {
-            wepy.chooseVideo({
-              count: 1,
-              maxDuration: 60,
-              camera: 'back',
-              sizeType: ['original', 'compressed']
-            }).then((res) => {
-              this.upload(res.tempFilePath, 'vedio')
-            })
-          }
-        })
-        .catch(e => {})
+          })
+          .catch(e => {})
       },
       onRemove(index) {
         this.uploadFileList.splice(index)
@@ -101,7 +101,10 @@
         if (result.code != 0) {
           tips.toast('上传失败', null, 'none')
         } else {
-          this.uploadFileList.push({url: result.data, type})
+          this.uploadFileList.push({
+            url: result.data,
+            type
+          })
           this.$apply()
         }
         tips.loaded()
@@ -129,9 +132,9 @@
       <view class='pics'>
         <repeat for='{{uploadFileList}}' item='item'>
           <view class='upload-item btn'>
-            <image  src='{{item.url}}' wx:if="{{ item.type === 'image' }}" />
+            <image src='{{item.url}}' wx:if="{{ item.type === 'image' }}" />
             <view class='vedio-wrap' wx:else="{{ item.type === 'video' }}">
-              <video id="video{{index}}"  src='{{item.url}}'></video>
+              <video id="video{{index}}" src='{{item.url}}'></video>
             </view>
             <view class="upload-item-remove" data-file="{{ item }}" data-index="{{ index }}" catchtap="onRemove({{index}})">
               <text>x</text>
@@ -186,7 +189,9 @@
         height: 200rpx;
         border: solid 1rpx #cccccc;
       }
-      image, video, .vedio-wrap {
+      image,
+      video,
+      .vedio-wrap {
         width: 100%;
         height: 100%;
       }
@@ -203,7 +208,7 @@
       display: flex;
       align-content: center;
       justify-content: center;
-      border-radius: 50%; 
+      border-radius: 50%;
       background-color: #888888;
       opacity: 0.2;
       position: absolute;

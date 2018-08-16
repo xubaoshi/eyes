@@ -148,6 +148,8 @@
         </view>
         <view class='upload-item upload-item-empty'>
         </view>
+        <view class='upload-item upload-item-empty'>
+        </view>
       </view>
     </view>
     <view class='tips'>

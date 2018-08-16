@@ -27,6 +27,7 @@
     }
     config = {
       pages: [
+        'pages/patient/doctor/evalateList',
         'pages/patient/index',
         // ================================
         // consult
@@ -41,7 +42,6 @@
         // ================================
         // doctor
         'pages/patient/doctor/detail',
-        'pages/patient/doctor/evalateList',
         'pages/patient/doctor/index',
         // ================================
         // user
@@ -58,7 +58,7 @@
       ],
       window: {
         backgroundTextStyle: 'light',
-        navigationBarBackgroundColor: '#ffffff',
+        navigationBarBackgroundColor: '#f8f8f8',
         navigationBarTitleText: '爱眼康',
         navigationBarTextStyle: 'black',
         backgroundColor: '#f7f7fA'

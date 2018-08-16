@@ -14,8 +14,9 @@
   <!-- S 评价部分 -->
     <view class='cmt-wrap'>
       <view class='cmt-top'>
-        患者评价
-        <text class='cmt-more'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
+       <text class='cmt-eval'>满意(142)</text>
+       <text class='cmt-eval'>一般(142)</text>
+       <text class='cmt-eval'>不满意(142)</text>
       </view>
       <!-- /评价顶部 -->
       <view class='cmt-lst'>

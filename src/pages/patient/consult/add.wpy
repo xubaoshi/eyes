@@ -1,5 +1,5 @@
 <script>
-  /* eslint-disable */ 
+  /* eslint-disable */
   import wepy from 'wepy'
   import zanField from '@/components/zanui/zan-field'
   import zanActionsheet from '@/components/zanui/zan-actionsheet'
@@ -144,6 +144,10 @@
         <view class='upload-item btn' @tap='handleUpload'>
           <text class='plus'>+</text>
         </view>
+        <view class='upload-item upload-item-empty'>
+        </view>
+        <view class='upload-item upload-item-empty'>
+        </view>
       </view>
     </view>
     <view class='tips'>
@@ -160,6 +164,7 @@
     min-height: 380rpx;
     padding: 20rpx 32rpx 0 32rpx;
     margin-bottom: 16rpx;
+    overflow: hidden;
     .conts {
       margin-bottom: 148rpx;
       min-height: 200rpx;
@@ -177,17 +182,19 @@
     }
     .pics {
       display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 0 10rpx 0 10rpx;
+     margin-bottom: -200rpx;
       .upload-item {
         position: relative;
         display: flex;
-        margin-bottom: 20px;
+        margin: 10rpx;
         width: 200rpx;
         height: 200rpx;
         border: solid 1rpx #cccccc;
+      }
+      .upload-item-empty{
+        border: none;
+        flex: 1 1 100px;
       }
       image,
       video,

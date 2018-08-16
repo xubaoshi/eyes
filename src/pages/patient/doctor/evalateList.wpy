@@ -25,7 +25,7 @@
           <view class='cmt-hd'>
             <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
             <text class='cmt-author'>王艳</text>
-            <text>五角星展示</text>
+            <text class='cmt-eval'>满意</text>
             <text class='cmt-date'>2018-08-06</text>
           </view>
           <view class='cmt-bd'>
@@ -39,6 +39,7 @@
           <view class='cmt-hd'>
             <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
             <text class='cmt-author'>王艳</text>
+            <text class='cmt-eval'>满意</text>
             <text class='cmt-date'>2018-08-06</text>
           </view>
           <view class='cmt-bd'>

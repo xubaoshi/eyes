@@ -14,8 +14,7 @@
     components = {
       customSwiper
     }
-    data = {
-    }
+    data = {}
     computed = {
       bannerUrls() {
         if (lang.isEmpty(this.home) || lang.isEmpty(this.home.bannerList)) {
@@ -43,6 +42,7 @@
 <template>
   <view>
     <customSwiper :bannerUrls.sync='bannerUrls' />
+    <!-- S 快捷入口 -->
     <view class='quick-list'>
       <view class='quick-item' @tap='handleGoCon'>
         <view class='item-icon bk-g'>
@@ -65,14 +65,58 @@
         <text class='iconfont  icon-zhankai arrow'></text>
       </view>
     </view>
+    <!-- E 快捷入口 -->
+    <!-- S 评价部分 -->
+    <view class='cmt-wrap'>
+      <view class='cmt-top'>
+        患者评价
+        <text class='cmt-more'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
+      </view>
+      <!-- /评价顶部 -->
+      <view class='cmt-lst'>
+        <!-- /评价列表项，循环 -->
+        <view class='cmt-item'>
+          <view class='cmt-hd'>
+            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+            <text class='cmt-author'>王艳</text>
+            <text class='cmt-date'>2018-08-06</text>
+          </view>
+          <view class='cmt-bd'>
+            <text class='cmt-doc'>主治医生：李卫国</text>
+            <view class='cmt-txt'>
+              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
+            </view>
+          </view>
+        </view>
+        <view class='cmt-item'>
+          <view class='cmt-hd'>
+            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+            <text class='cmt-author'>王艳</text>
+            <text class='cmt-date'>2018-08-06</text>
+          </view>
+          <view class='cmt-bd'>
+            <text class='cmt-doc'>主治医生：李卫国</text>
+            <view class='cmt-txt'>
+              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
+            </view>
+          </view>
+        </view>
+        <!-- /评价列表项，循环 -->
+      </view>
+      <!-- /评价列表 -->
+    </view>
+    <!-- E 评价部分 -->
   </view>
 </template>
 
 <style lang='less' scoped>
+  @import url('../../../styles/components/consult.less');
   .quick-list {
     margin-bottom: 16rpx;
     background-color: #ffffff;
-    padding-left: 32rpx;
+    padding-left: 30rpx;
+    border-top: 1rpx solid #e5e5e5;
+    border-bottom: 1rpx solid #e5e5e5;
     .quick-item {
       position: relative;
       display: flex;

@@ -126,7 +126,7 @@ eslint（插件）
             --evalateList.wpy //医生评价列表（tr3）
         --user
             --info.wpy     //个人信息（tr3）
-            --name.wpy     //修改昵称（tr3）
+            --name.wpy     //修改昵称（tr3）
             --income.wpy   //收入明细（tr3）
             --cash.wpy     //选择银行（提现）（tr3）
           --share

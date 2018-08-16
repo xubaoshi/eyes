@@ -27,12 +27,34 @@
     }
     config = {
       pages: [
-        'pages/patient/consult/consulter/list',
         'pages/patient/index',
+        // ================================
+        // consult
         'pages/patient/consult/add',
+        'pages/patient/consult/detail',
+        'pages/patient/consult/evaluate',
+        'pages/patient/consult/history',
         'pages/patient/consult/pay',
+        'pages/patient/consult/reply',
+        'pages/patient/consult/consulter/list',
         'pages/patient/consult/consulter/add',
-        'pages/patient/doctor/index'
+        // ================================
+        // doctor
+        'pages/patient/doctor/detail',
+        'pages/patient/doctor/evalateList',
+        'pages/patient/doctor/index',
+        // ================================
+        // user
+        'pages/patient/user/cash',
+        'pages/patient/user/income',
+        'pages/patient/user/info',
+        'pages/patient/user/name',
+        'pages/patient/user/consulter/add',
+        'pages/patient/user/consulter/list',
+        'pages/patient/user/share/index',
+        'pages/patient/user/share/myUser',
+        'pages/patient/user/share/preview'
+        // ================================
       ],
       window: {
         backgroundTextStyle: 'light',

@@ -5,7 +5,7 @@
       navigationBarTitleText: '修改昵称'
     }
     onLoad() {
-      console.log('this is home page')
+      console.log('this is home page1')
     }
   }
 </script>

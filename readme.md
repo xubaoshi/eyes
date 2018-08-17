@@ -114,16 +114,16 @@ eslint（插件）
             --add.wpy      //快速咨询第一步
             --pay.wpy      //支付页
             --history.wpy  //历史记录（sorrowhere）
-            --evaluate.wpy //评价（sorrowhere 完成）
+            --evaluate.wpy //评价（sorrowhere 完成 8.16）
             --detail.wpy   //详情（sorrowhere）
             --reply.wpy    //快速回复（sorrowhere）
             --consulter
               --add.wpy    //添加咨询人
               --list.wpy   //选择咨询人
         --doctor
-            --index.wpy    //找医生（sorrowhere）
-            --detail.wpy   //医生详情（sorrowhere 完成）
-            --evalateList.wpy //医生评价列表（sorrowhere 完成）
+            --index.wpy    //找医生（sorrowhere 完成8.17）
+            --detail.wpy   //医生详情（sorrowhere 完成 8.17）
+            --evalateList.wpy //医生评价列表（sorrowhere 完成 8.16）
         --user
             --info.wpy     //个人信息（sorrowhere）
             --name.wpy     //修改昵称（sorrowhere）

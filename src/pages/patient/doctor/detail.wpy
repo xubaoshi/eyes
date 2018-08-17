@@ -12,10 +12,124 @@
 
 <template>
   <view>
-    this is patient doctor detail page
+    <!-- S 医生简介 -->
+    <view class='doc-profile'>
+      <view class='doc-info'>
+        <view class='doc-name'>王大陆</view>
+        <view class='doc-title'>
+          <text class='txt'>眼科副主任医师</text>
+          <text class='txt'>江苏省南京市鼓楼医院</text>
+        </view>
+        <image class='doc-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+      </view>
+      <view class='doc-ft'>
+        <view class='doc-ft-item'>
+          <view class='doc-ft-item-cell'><text class='txt'>230</text>元/次</view>
+          <view class='doc-ft-item-cell'><text class='txt'>98.8</text>%</view>
+        </view>
+        <view class='doc-ft-item'>
+          <view class='doc-ft-item-cell'>咨询人次</view>
+          <view class='doc-ft-item-cell'>好评率</view>
+        </view>
+      </view>
+    </view>
+    <!-- E 医生简介 -->
+    <!-- S 评价部分 -->
+    <view class='cmt-wrap'>
+      <view class='cmt-top'>
+        评价(901)
+        <text class='cmt-more'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
+      </view>
+      <!-- /评价顶部 -->
+      <view class='cmt-lst'>
+        <!-- /评价列表项，循环 -->
+        <view class='cmt-item'>
+          <view class='cmt-hd'>
+            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+            <text class='cmt-author'>王艳</text>
+            <text class='cmt-eval'>满意</text>
+            <text class='cmt-date'>2018-08-06</text>
+          </view>
+          <view class='cmt-bd'>
+            <text class='cmt-doc'>主治医生：李卫国</text>
+            <view class='cmt-txt'>
+              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
+            </view>
+          </view>
+        </view>
+        <view class='cmt-item'>
+          <view class='cmt-hd'>
+            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+            <text class='cmt-author'>王艳</text>
+            <text class='cmt-eval'>满意</text>
+            <text class='cmt-date'>2018-08-06</text>
+          </view>
+          <view class='cmt-bd'>
+            <text class='cmt-doc'>主治医生：李卫国</text>
+            <view class='cmt-txt'>
+              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
+            </view>
+          </view>
+        </view>
+        <!-- /评价列表项，循环 -->
+      </view>
+      <!-- /评价列表 -->
+    </view>
+    <!-- E 评价部分 -->
+    <!-- S 底部立即咨询悬浮按钮 -->
+    <view class='fix-btm'>
+      <button type='primary'>立即咨询(10元/次)</button>
+    </view>
+    <!-- E 底部立即咨询悬浮按钮 -->
   </view>
 </template>
 
 <style lang="less" scoped>
+  @import url('../../../styles/components/comment.less');
+  .doc-profile {
+    padding: 40rpx 30rpx;
+    margin-bottom: 30rpx;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fff;
+    .doc-info {
+      overflow: hidden;
+      .doc-name {
+        margin-bottom: 15rpx;
+        font-size: 40rpx;
+        line-height: 56rpx;
+      }
+      .doc-title {
+        .txt {
+          display: block;
+          font-size: 26rpx;
+          color: #999;
+        }
+      }
+      .doc-avatar {
+        float: right;
+        margin-top: -130rpx;
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+      }
+    }
+    .doc-ft {
+      margin-top: 30rpx;
+      .doc-ft-item {
+        overflow: hidden;
+      }
+      .doc-ft-item-cell {
+        float: left;
+        width: 160rpx;
+        line-height: 30rpx;
+        color: #999;
+        .txt {
+          color: #222;
+        }
+      }
+    }
+  }
+
+  
 
 </style>

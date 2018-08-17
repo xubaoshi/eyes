@@ -198,19 +198,29 @@ view.bg-white{background-color: white}
 
 /** 重新定义按钮 **/
 button{
-  margin:0;
+  margin:30rpx;
 }
 /*主要按钮*/
 button[type="primary"]{
-  background-color: @color-primary;
+  background-color: @btn-primary;
 }
 button[type="primary"][plain]{
-  color: @color-primary;
-  border-color: @color-primary;
+  color: @btn-primary;
+  border-color: @btn-primary;
 }
 .button-hover[type="primary"]{
-  background-color: @color-primary-darken;
+  background-color: @btn-primary-darken;
 }
+
+/*默认按钮*/
+button[type="default"]{
+  background-color: @btn-default;
+}
+button[type="default"][plain]{
+  color: @btn-default;
+  border-color: #e5e5e5;
+}
+
 /*分享按钮*/
 button[plain]{
   border:none;
@@ -249,6 +259,20 @@ button.pain-btn[open-type="share"]::after {
   width: 60px;
   height: 50px;
 }
+
+
+
+/** 底部浮动浮层 **/
+.fix-btm{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  
+  width: 100%;
+  border-top: 1rpx solid #e5e5e5;
+  background-color: #fff;
+}
+
 //******图片样式******/
 // @mixin icon-image(@size){
 //   min-height: @size;

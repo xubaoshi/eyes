@@ -88,7 +88,7 @@ eslint（插件）
       window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#fff',
-        navigationBarTitleText: '爱眼康',
+        navigationBarTitleText: 'xxx',
         navigationBarTextStyle: 'black'
       }
     }

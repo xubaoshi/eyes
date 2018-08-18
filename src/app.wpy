@@ -27,11 +27,11 @@
     }
     config = {
       pages: [
-        'pages/patient/consult/detail',
         'pages/patient/index',
         // ================================
         // consult
         'pages/patient/consult/add',
+        'pages/patient/consult/detail',
         'pages/patient/consult/evaluate',
         'pages/patient/consult/pay',
         'pages/patient/consult/reply',

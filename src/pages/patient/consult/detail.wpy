@@ -12,10 +12,61 @@
 
 <template>
   <view>
-    this is patient consult detail page
+    <!-- S 医生简介 -->
+    <view class='doc-profile'>
+      <view class='doc-info'>
+        <view class='doc-name'>王大陆</view>
+        <view class='doc-title'>
+          <text class='txt'>眼科副主任医师</text>
+          <text class='txt'>江苏省南京市鼓楼医院</text>
+        </view>
+        <image class='doc-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+      </view>
+    </view>
+
+    <!-- S 聊天界面 -->
+    <view class='chat-wrap'>
+      <!-- 发送消息 -->
+      <view class='chat-txt chat-txt-send'>
+        <view class='chat-txt'>
+          <image class='avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+          <view class='txt'>左眼视力下降，戴眼镜几乎看不见，只能勉强看到影子。然后在你的建议下，做了眼底检查和眼部OTC检查，但是没有异常，这是什么情况呢？ </view>
+        </view>
+      </view>
+      <!-- /发送消息 -->
+      <!-- 接收消息 -->
+      <view class='chat-txt chat-txt-receive'>
+        <image class='avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+        <view class='txt'>建议先来医院拍个片子建议先来医院拍个片子 </view>
+      </view>
+      <!-- /接收消息 -->
+      <!-- 发送消息 -->
+      <view class='chat-txt chat-txt-send'>
+        <image class='avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+        <view class='txt txt-img'>
+          <image class='img' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+        </view>
+      </view>
+      <!-- /发送消息 -->
+      <!-- 接收消息 -->
+      <view class='chat-txt chat-txt-receive'>
+        <image class='avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+        <view class='txt txt-img'>
+          <image class='img' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+        </view>
+      </view>
+      <!-- /接收消息 -->
+    </view>
+    <!-- E 聊天界面 -->
+    <!-- S 底部立即咨询悬浮按钮 -->
+    <view class='fix-btm'>
+      <button type='primary'>快速回复</button>
+    </view>
+    <!-- E 底部立即咨询悬浮按钮 -->
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  @import url('../../../styles/components/doc_profile.less');
+  @import url('../../../styles/components/chat.less');
 </style>

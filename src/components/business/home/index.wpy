@@ -22,6 +22,13 @@
         } else {
           return this.home.bannerList
         }
+      },
+      evaluateList() {
+        if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list.list)) {
+          return []
+        } else {
+          return this.evaluate.list.list
+        }
       }
     }
     methods = {
@@ -33,6 +40,11 @@
       handleGoDoc() {
         wepy.navigateTo({
           url: '/pages/patient/doctor/index'
+        })
+      },
+      handleGoAllEval() {
+        wepy.navigateTo({
+          url: '/pages/patient/doctor/evalateList?type=all'
         })
       }
     }
@@ -70,39 +82,27 @@
     <view class='cmt-wrap'>
       <view class='cmt-top'>
         患者评价
-        <text class='cmt-more'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
+        <text class='cmt-more' @tap='handleGoAllEval'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
       </view>
       <!-- /评价顶部 -->
       <view class='cmt-lst'>
         <!-- /评价列表项，循环 -->
-        <view class='cmt-item'>
-          <view class='cmt-hd'>
-            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
-            <text class='cmt-author'>王艳</text>
-             <text class='cmt-eval'>满意</text>
-            <text class='cmt-date'>2018-08-06</text>
-          </view>
-          <view class='cmt-bd'>
-            <text class='cmt-doc'>主治医生：李卫国</text>
-            <view class='cmt-txt'>
-              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
+        <repeat for='{{evaluateList}}' item='item'>
+          <view class='cmt-item'>
+            <view class='cmt-hd'>
+              <image class='cmt-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
+              <text class='cmt-author'>{{item.userName}}</text>
+              <text class='cmt-eval'>{{item.eval}}</text>
+              <text class='cmt-date'>{{lang.dateFormate(item.date,'YYYY-MM-DD')}}</text>
+            </view>
+            <view class='cmt-bd'>
+              <text class='cmt-doc'>主治医生：{{item.doctorName}}</text>
+              <view class='cmt-txt'>
+                {{item.evalContent}}
+              </view>
             </view>
           </view>
-        </view>
-        <view class='cmt-item'>
-          <view class='cmt-hd'>
-            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
-            <text class='cmt-author'>王艳</text>
-             <text class='cmt-eval'>满意</text>
-            <text class='cmt-date'>2018-08-06</text>
-          </view>
-          <view class='cmt-bd'>
-            <text class='cmt-doc'>主治医生：李卫国</text>
-            <view class='cmt-txt'>
-              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
-            </view>
-          </view>
-        </view>
+        </repeat>
         <!-- /评价列表项，循环 -->
       </view>
       <!-- /评价列表 -->

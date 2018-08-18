@@ -20,14 +20,14 @@
       user
     }
     data = {
-      currentIndex: 1,
+      currentIndex: 0,
       tabBars: [{
-        current: 0,
+        current: 1,
         pagePath: '/pages/patient/home/index',
         iconClass: 'icon-shouye',
         text: '爱眼康'
       }, {
-        current: 1,
+        current: 0,
         pagePath: '/pages/patient/consult/index',
         iconClass: 'icon-zaixianzixun',
         text: '我的咨询'
@@ -74,7 +74,7 @@
 </script>
 
 <template>
-  <view>
+  <view class='container'>
     <home wx:if='{{currentIndex === 0}}' />
     <consult wx:elif='{{currentIndex === 1}}' />
     <home wx:elif='{{currentIndex === 2}}' />
@@ -85,5 +85,7 @@
 </template>
 
 <style lang="less" scoped>
-
+  .container {
+    margin-bottom: 120rpx;
+  }
 </style>

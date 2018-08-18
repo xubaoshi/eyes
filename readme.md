@@ -136,7 +136,7 @@ eslint（插件）
           --consulter
               --add.wpy    //咨询人信息（sorrowhere）
               --list.wpy   //咨询人（sorrowhere）
-      --index.wpy          //首页（sorrowhere）
+      --index.wpy          //首页（sorrowhere 完成8.16）
 ```
 
 ## Mock 数据

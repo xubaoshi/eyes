@@ -24,10 +24,17 @@
         }
       },
       evaluateList() {
-        if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list.list)) {
+        if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list)) {
           return []
         } else {
-          return this.evaluate.list.list
+          return this.evaluate.list
+        }
+      },
+      title() {
+        if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list)) {
+          return '患者评价'
+        } else {
+          return `患者评价（${this.evaluate.records}）`
         }
       }
     }
@@ -81,7 +88,7 @@
     <!-- S 评价部分 -->
     <view class='cmt-wrap'>
       <view class='cmt-top'>
-        患者评价
+         {{title}}
         <text class='cmt-more' @tap='handleGoAllEval'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
       </view>
       <!-- /评价顶部 -->
@@ -93,7 +100,7 @@
               <image class='cmt-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
               <text class='cmt-author'>{{item.userName}}</text>
               <text class='cmt-eval'>{{item.eval}}</text>
-              <text class='cmt-date'>{{lang.dateFormate(item.date,'YYYY-MM-DD')}}</text>
+              <text class='cmt-date'>{{item.dateFormat}}</text>
             </view>
             <view class='cmt-bd'>
               <text class='cmt-doc'>主治医生：{{item.doctorName}}</text>

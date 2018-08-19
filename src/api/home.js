@@ -11,9 +11,7 @@ export default class home extends base {
         store.save('home', {
           bannerList
         })
-        store.save('evaluate', {
-          list: evaluateList
-        })
+        store.save('evaluate', evaluateList)
         return true
       }
     )

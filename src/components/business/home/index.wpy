@@ -27,7 +27,11 @@
         if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list)) {
           return []
         } else {
-          return this.evaluate.list
+          if (this.evaluate.list.length > 0) {
+            return this.evaluate.list.slice(0, 9)
+          } else {
+            return this.evaluate.list
+          }
         }
       },
       title() {
@@ -88,7 +92,7 @@
     <!-- S 评价部分 -->
     <view class='cmt-wrap'>
       <view class='cmt-top'>
-         {{title}}
+        {{title}}
         <text class='cmt-more' @tap='handleGoAllEval'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
       </view>
       <!-- /评价顶部 -->

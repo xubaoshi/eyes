@@ -36,7 +36,13 @@
           title: '更多评价'
         })
       }
+      const source = e.type === 'all' ? this.evaluate : this.doctor.evaluate
       this.$apply()
+      if (lang.isNotEmpty(source.list) && source.list.length > 10) {
+        source.list.splice(10, source.list.length - 1)
+        source.pageNo = 1
+        store.save('evaluate', source)
+      }
     }
     computed = {
       evaluateList() {
@@ -52,7 +58,7 @@
       async bindDownLoad() {
         const source = this.showAllEval ? this.evaluate : this.doctor.evaluate
         let arr = []
-        if (source.pages === source.pageNo) {
+        if (parseInt(source.pages) === parseInt(source.pageNo)) {
           return
         }
         if (this.isLoading) {

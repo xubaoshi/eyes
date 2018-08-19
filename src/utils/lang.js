@@ -57,7 +57,7 @@ export default class Lang {
   }
 
   // 格式化日期
-  static dateFormate(date, fmt) {
+  static dateFormat(date, fmt) {
     date = new Date(date)
     const o = {
       'M+': date.getMonth() + 1,

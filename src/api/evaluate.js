@@ -10,6 +10,6 @@ export default class evaluate extends base {
     return new Page(url, this.processEvalData.bind(this))
   }
   static processEvalData(item) {
-    item['dateFormat'] = lang.dateFormate(item.date, 'yyyy-MM-dd')
+    item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
   }
 }

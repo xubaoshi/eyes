@@ -31,7 +31,7 @@
         </view>
         <view class="zan-radio__name">
           <view class='name'>
-            {{item.name}}
+            {{item.relation}}
           </view>
           <view class='sub-name'>
             {{item.subName}}

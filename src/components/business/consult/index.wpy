@@ -1,14 +1,49 @@
 <script>
-import wepy from 'wepy'
-export default class ConsultIndex extends wepy.component {
-
-}
+  import wepy from 'wepy'
+  export default class ConsultIndex extends wepy.component {
+  }
 </script>
 <template>
   <view>
-    this is my consult
+    <!-- S 咨询部分 -->
+    <view class='cst-lst'>
+      <view class='cst-top'>
+        当前咨询
+        <text class='cst-more'>历史记录 <text class='iconfont  icon-zhankai arrow'></text></text>
+      </view>
+       <!-- 循环.cst-item -->
+      <view class='cst-item'>
+        <view class='cst-bd'>
+          <image class='cst-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+          <view class='cst-info'>
+            <view class='cst-info-bd'>
+              <text class='cst-name'>王大陆</text>
+              <text class='cst-status'>受理中</text>
+              <text class='cst-date'>2018-06-03</text>
+            </view>
+            <view class='cst-txt'>左眼视力下降，戴眼镜几乎看不见，只能勉强看到影子。然后在你的建议下，做了眼底检…</view>
+          </view>
+        </view>
+      </view>
+      <view class='cst-item'>
+        <view class='cst-bd'>
+          <image class='cst-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+          <view class='cst-info'>
+            <view class='cst-info-bd'>
+              <text class='cst-name'>王大陆</text>
+              <text class='cst-status'>受理中</text>
+              <text class='cst-date'>2018-06-03</text>
+            </view>
+            <view class='cst-txt'>左眼视力下降，戴眼镜几乎看不见，只能勉强看到影子。然后在你的建议下，做了眼底检…</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- E 咨询部分 -->
   </view>
 </template>
-<style lang="less" scoped>
 
+
+<style lang="less" scoped>
+ @import url('../../../styles/components/consult.less');
 </style>

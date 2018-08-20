@@ -34,9 +34,9 @@
         'pages/patient/consult/add',
         'pages/patient/consult/detail',
         'pages/patient/consult/evaluate',
-        'pages/patient/consult/history',
         'pages/patient/consult/pay',
         'pages/patient/consult/reply',
+        'pages/patient/consult/history',
         'pages/patient/consult/consulter/list',
         'pages/patient/consult/consulter/add',
         // ================================

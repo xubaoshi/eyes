@@ -24,10 +24,21 @@
         }
       },
       evaluateList() {
-        if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list.list)) {
+        if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list)) {
           return []
         } else {
-          return this.evaluate.list.list
+          if (this.evaluate.list.length > 0) {
+            return this.evaluate.list.slice(0, 9)
+          } else {
+            return this.evaluate.list
+          }
+        }
+      },
+      title() {
+        if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list)) {
+          return '患者评价'
+        } else {
+          return `患者评价（${this.evaluate.records}）`
         }
       }
     }
@@ -40,6 +51,11 @@
       handleGoDoc() {
         wepy.navigateTo({
           url: '/pages/patient/doctor/index'
+        })
+      },
+      handleGoAllEval() {
+        wepy.navigateTo({
+          url: '/pages/patient/doctor/evalateList?type=all'
         })
       }
     }
@@ -76,12 +92,13 @@
     <!-- S 评价部分 -->
     <view class='cmt-wrap'>
       <view class='cmt-top'>
-        患者评价
-        <text class='cmt-more'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
+        {{title}}
+        <text class='cmt-more' @tap='handleGoAllEval'>查看全部 <text class='iconfont  icon-zhankai arrow'></text></text>
       </view>
       <!-- /评价顶部 -->
       <view class='cmt-lst'>
         <!-- /评价列表项，循环 -->
+<<<<<<< HEAD
         <view class='cmt-item'>
           <view class='cmt-hd'>
             <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
@@ -125,6 +142,23 @@
               </view>
             </view>
           </view>
+=======
+        <repeat for='{{evaluateList}}' item='item'>
+          <view class='cmt-item'>
+            <view class='cmt-hd'>
+              <image class='cmt-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
+              <text class='cmt-author'>{{item.userName}}</text>
+              <text class='cmt-eval'>{{item.eval}}</text>
+              <text class='cmt-date'>{{item.dateFormat}}</text>
+            </view>
+            <view class='cmt-bd'>
+              <text class='cmt-doc'>主治医生：{{item.doctorName}}</text>
+              <view class='cmt-txt'>
+                {{item.evalContent}}
+              </view>
+            </view>
+          </view>
+>>>>>>> 9370b7fe6c6010a5d2bb004d88320b01fbf45fda
         </repeat>
         <!-- /评价列表项，循环 -->
       </view>

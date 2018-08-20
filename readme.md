@@ -113,10 +113,10 @@ eslint（插件）
         --consult
             --add.wpy      //快速咨询第一步
             --pay.wpy      //支付页
-            --history.wpy  //历史记录（sorrowhere）
+            --history.wpy  //历史记录（sorrowhere 完成8.17）
             --evaluate.wpy //评价（sorrowhere 完成 8.16）
-            --detail.wpy   //详情（sorrowhere）
-            --reply.wpy    //快速回复（sorrowhere）
+            --detail.wpy   //详情（sorrowhere 完成8.18）
+            --reply.wpy    //快速回复
             --consulter
               --add.wpy    //添加咨询人
               --list.wpy   //选择咨询人
@@ -136,7 +136,7 @@ eslint（插件）
           --consulter
               --add.wpy    //咨询人信息（sorrowhere）
               --list.wpy   //咨询人（sorrowhere）
-      --index.wpy          //首页（sorrowhere）
+      --index.wpy          //首页（sorrowhere 完成8.16）
 ```
 
 ## Mock 数据

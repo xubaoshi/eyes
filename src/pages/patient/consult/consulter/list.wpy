@@ -20,7 +20,8 @@
     data = {
       selectItem: null
     }
-    onLoad() {
+    onShow() {
+      store.save('consulterList', [])
       consulterService.consulterList()
     }
     methods = {
@@ -68,10 +69,10 @@
         </view>
         <view class='info'>增加咨询人信息</view>
         <text class='iconfont  icon-zhankai arrow'></text>
-        </view>
       </view>
     </view>
-    <button @tap='next' class='next-btn'>下一步</button>
+  </view>
+  <button @tap='next' class='next-btn'>下一步</button>
 </template>
 
 <style lang="less" scoped>

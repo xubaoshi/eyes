@@ -20,14 +20,14 @@
       user
     }
     data = {
-      currentIndex: 0,
+      currentIndex: 1,
       tabBars: [{
-        current: 1,
+        current: 0,
         pagePath: '/pages/patient/home/index',
         iconClass: 'icon-shouye',
         text: '爱眼康'
       }, {
-        current: 0,
+        current: 1,
         pagePath: '/pages/patient/consult/index',
         iconClass: 'icon-zaixianzixun',
         text: '我的咨询'

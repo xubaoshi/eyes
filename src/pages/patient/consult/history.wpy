@@ -12,10 +12,45 @@
 
 <template>
   <view>
-    this is patient consult history page
+    <!-- S 咨询部分 -->
+    <view class='cst-lst cst-lst-history'>
+      <!-- 循环.cst-item -->
+      <view class='cst-item'>
+        <view class='cst-bd'>
+          <image class='cst-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+          <view class='cst-info'>
+            <view class='cst-info-bd'>
+              <text class='cst-name'>王大陆</text>
+              <text class='cst-date'>2018-06-03</text>
+            </view>
+            <view class='cst-txt'>左眼视力下降，戴眼镜几乎看不见，只能勉强看到影子。然后在你的建议下，做了眼底检…</view>
+          </view>
+        </view>
+        <view class='cst-ft'>
+           <text class='cst-ft-lnk cst-ft-lnk-primary'>评价</text>
+        </view>
+      </view>
+       <view class='cst-item'>
+        <view class='cst-bd'>
+          <image class='cst-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+          <view class='cst-info'>
+            <view class='cst-info-bd'>
+              <text class='cst-name'>王大陆</text>  
+              <text class='cst-eval'>满意</text>
+              <text class='cst-date'>2018-06-03</text>
+            </view>
+            <view class='cst-txt'>左眼视力下降，戴眼镜几乎看不见，只能勉强看到影子。然后在你的建议下，做了眼底检…</view>
+          </view>
+        </view>
+        <view class='cst-ft'>
+           <text class='cst-ft-lnk'>再次咨询</text>
+        </view>
+      </view>
+    </view>
+    <!-- E 咨询部分 -->
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  @import url('../../../styles/components/consult.less');
 </style>

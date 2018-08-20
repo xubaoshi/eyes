@@ -1,21 +1,165 @@
 <script>
+  /* eslint-disable */
   import wepy from 'wepy'
+  import lang from '@/utils/lang'
+  import tips from '@/utils/tips'
+  import consulterService from '@/api/consulter'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '咨询人信息'
     }
-    onLoad() {
-      console.log('this is home page')
+    data = {
+      dateEnd: lang.dateFormat(new Date(), 'yyyy-MM-dd'),
+      date: undefined,
+      relation: undefined,
+      sex: undefined,
+      name: undefined,
+      array: ['父母', '子女'],
+      objectArray: [{
+          id: 0,
+          name: '父母'
+        },
+        {
+          id: 1,
+          name: '子女'
+        }
+      ]
+    }
+    methods = {
+      handleDateChange(e) {
+        this.date = lang.dateFormat(e.detail.value, 'yyyy-MM-dd')
+        this.$apply()
+      },
+      handleRadioChange(e) {
+        this.sex = e.detail.value
+        this.$apply()
+      },
+      handleRelationChange(e) {
+        this.relation = e.detail.value
+        this.$apply()
+      },
+      async confirm(e) {
+        if (!this.relation) {
+          tips.toast('请选择与你的关系', null, 'none')
+          return
+        }
+        if (!e.detail.value.name) {
+          tips.toast('请输入姓名', null, 'none')
+          return
+        }
+        if (!this.sex) {
+          tips.toast('请选择性别', null, 'none')
+          return
+        }
+        if (!this.date) {
+          tips.toast('请选择出生日期', null, 'none')
+          return
+        }
+        await consulterService.consulterAdd({
+          relation: this.relation,
+          name: e.detail.value.name,
+          sex: this.sex,
+          date: this.date
+        })
+        wepy.navigateBack()
+      }
     }
   }
 </script>
 
 <template>
-  <view>
-    this is patient consulter add page
+  <view class="container">
+    <form @submit="confirm">
+      <view class="weui-cells-form">
+        <!-- S 与你关系 -->
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">与的你关系</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker @change="handleRelationChange" value="{{relation}}" range="{{array}}">
+              <view class="picker">
+                {{relation ? array[relation] : '请选择'}}
+              </view>
+            </picker>
+            <text class='iconfont  icon-zhankai arrow'></text>
+          </view>
+        </view>
+        <!-- E 与你关系 -->
+        <!-- S 姓名 -->
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">姓名</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="name" placeholder="请输入姓名" maxlength="5" value="{{name}}" />
+          </view>
+        </view>
+        <!-- E 姓名 -->
+        <!-- S 性别 -->
+        <view class="weui-cell weui-cells_after-title">
+          <view class="weui-cell__hd">
+            <view class="weui-label">性别</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="row">
+              <radio-group class="radio-group row" @change="handleRadioChange" id="sex">
+                <label class="radio row">
+                                  <radio value="1" checked="{{sex == 1}}"/>
+                                  男
+                                </label>
+                <label class="radio ml20 row">
+                                  <radio value="2" checked="{{sex == 2}}"/>
+                                    女
+                                </label>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <!-- E 性别 -->
+        <!-- S 出生日期 -->
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <view class="weui-label">出生日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" value='{{date}}' end='{{dateEnd}}' @change="handleDateChange">
+              <view class="picker">
+                {{date ? date : '请选择'}}
+              </view>
+            </picker>
+            <text class='iconfont  icon-zhankai arrow'></text>
+          </view>
+        </view>
+        <!-- E 出生日期 -->
+      </view>
+      <view class='tips'>以便医生给出更准确的治疗，信息仅医生可见</view>
+      <!--操作栏-->
+      <button class="weui-btn" type="primary" form-type="submit">创 建</button>
+    </form>
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  .container {
+    background-color: #f5f5f5;
+  }
+  .weui-cells-form {
+    background-color: #ffffff;
+  }
+  .tips {
+    padding: 30rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #9B9B9B;
+  }
+  .arrow {
+    position: absolute;
+    right: 32rpx;
+    bottom: 50%;
+    margin-bottom: -13rpx;
+    font-size: 26rpx;
+    color: #c7c7c7;
+    font-weight: bold;
+  }
 </style>

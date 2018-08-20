@@ -1,20 +1,32 @@
 <script>
   import wepy from 'wepy'
+  import region from '@/components/common/region'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '找专家'
     }
-    onLoad() {
-      console.log('this is doctor search page')
+    components = {
+      region
+    }
+    data = {
+      select: ['', '']
+    }
+    methods = {
+      handleRegionChange(e) {
+        this.select = [e.province, e.city]
+      }
     }
   }
 </script>
 
 <template>
   <view>
+    <region target="{{select}}" @regionChange.user="handleRegionChange">
+      <text>{{select[0]}}{{select[1]}}</text>1111
+    </region>
     <!-- S 医生列表 -->
     <view class='doc-lst'>
-       <!-- 循环 doc-item即可  -->
+      <!-- 循环 doc-item即可  -->
       <view class='doc-item'>
         <image class='doc-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
         <view class='doc-profile'>
@@ -29,7 +41,7 @@
           </view>
         </view>
       </view>
-       <view class='doc-item'>
+      <view class='doc-item'>
         <image class='doc-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
         <view class='doc-profile'>
           <view class='doc-name'>王大陆</view>
@@ -49,48 +61,48 @@
 </template>
 
 <style lang="less" scoped>
-  .doc-lst{
+  .doc-lst {
     padding: 0 30rpx;
     background-color: #fff;
     overflow: hidden;
-    .doc-item{
-        overflow: hidden;
-        padding: 30rpx 30rpx 30rpx 150rpx;
-        margin-bottom: -1rpx;
-        border-bottom: 1rpx solid #e5e5e5;
-        .doc-avatar{
-            float: left;
-            margin-left: -150rpx;
-            width: 120rpx;
-            height: 120rpx;
-            border-radius: 50%;
-        }
+    .doc-item {
+      overflow: hidden;
+      padding: 30rpx 30rpx 30rpx 150rpx;
+      margin-bottom: -1rpx;
+      border-bottom: 1rpx solid #e5e5e5;
+      .doc-avatar {
+        float: left;
+        margin-left: -150rpx;
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+      }
     }
-    .doc-profile{
-        .doc-name{
-            font-size: 34rpx;
-            line-height: 48rpx;
+    .doc-profile {
+      .doc-name {
+        font-size: 34rpx;
+        line-height: 48rpx;
+      }
+      .doc-advantage {
+        margin: 15rpx 0 25rpx;
+        .txt {
+          display: block;
+          margin-bottom: 10rpx;
+          line-height: 36rpx;
+          color: #999;
         }
-        .doc-advantage{
-            margin: 15rpx 0 25rpx;
-            .txt{
-                display: block;
-                margin-bottom: 10rpx;
-                line-height: 36rpx;
-                color:#999;
-            }
+      }
+      .doc-cost {
+        .txt {
+          font-size: 26rpx;
+          color: #999;
         }
-        .doc-cost{
-            .txt{
-                font-size: 26rpx;
-                color:#999;
-            }
-            .price{
-               margin-right: 20rpx;
-               font-size: 34rpx;
-               color:#e4393c;
-            }
+        .price {
+          margin-right: 20rpx;
+          font-size: 34rpx;
+          color: #e4393c;
         }
+      }
     }
-}
+  }
 </style>

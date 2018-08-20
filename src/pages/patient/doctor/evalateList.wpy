@@ -1,59 +1,118 @@
 <script>
   import wepy from 'wepy'
+  import {
+    connect
+  } from 'wepy-redux'
+  import lang from '@/utils/lang'
+  import store from '@/store/utils'
+  import evaluateService from '@/api/evaluate'
+  import zanLoadmore from '@/components/zanui/zan-loadmore'
+  @connect({
+    evaluate: store.get('evaluate')
+  })
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '患者评价'
     }
-    onLoad() {
-      console.log('this is doctor search page')
+    components = {
+      zanLoadmore
+    }
+    data = {
+      isLoading: false,
+      scrollTop: 0,
+      scrollHeight: 0,
+      showAllEval: false // 是否显示全部医生的评价
+    }
+    onLoad(e) {
+      wepy.getSystemInfo().then(res => {
+        this.scrollHeight = res.windowHeight + 160
+        this.$apply()
+      })
+      if (e.type === 'all') {
+        this.showAllEval = true
+      } else {
+        this.showAllEval = false
+        wepy.setNavigationBarTitle({
+          title: '更多评价'
+        })
+      }
+      const source = e.type === 'all' ? this.evaluate : this.doctor.evaluate
+      this.$apply()
+      if (lang.isNotEmpty(source.list) && source.list.length > 10) {
+        source.list.splice(10, source.list.length - 1)
+        source.pageNo = 1
+        store.save('evaluate', source)
+      }
+    }
+    computed = {
+      evaluateList() {
+        const source = this.showAllEval ? this.evaluate : lang.isEmpty(this.doctor) ? [] : this.doctor.evaluate
+        if (lang.isEmpty(source) || lang.isEmpty(source)) {
+          return []
+        } else {
+          return source.list
+        }
+      }
+    }
+    methods = {
+      async bindDownLoad() {
+        const source = this.showAllEval ? this.evaluate : this.doctor.evaluate
+        let arr = []
+        if (parseInt(source.pages) === parseInt(source.pageNo)) {
+          return
+        }
+        if (this.isLoading) {
+          return
+        }
+        this.isLoading = true
+        this.$apply()
+        arr = await evaluateService.list().next()
+        arr.list = source.list.concat(arr.list)
+        store.save('evaluate', arr)
+        this.isLoading = false
+        this.$apply()
+      },
+      scroll(e) {
+        this.scrollTop = e.detail.scrollTop
+        this.$apply()
+      }
     }
   }
 </script>
 
 <template>
   <!-- S 评价部分 -->
-    <view class='cmt-wrap'>
-      <view class='cmt-top'>
-       <text class='cmt-eval'>满意(142)</text>
-       <text class='cmt-eval'>一般(142)</text>
-       <text class='cmt-eval'>不满意(142)</text>
-      </view>
-      <!-- /评价顶部 -->
-      <view class='cmt-lst'>
-        <!-- /评价列表项，循环 -->
-        <view class='cmt-item'>
-          <view class='cmt-hd'>
-            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
-            <text class='cmt-author'>王艳</text>
-            <text class='cmt-eval'>满意</text>
-            <text class='cmt-date'>2018-08-06</text>
-          </view>
-          <view class='cmt-bd'>
-            <text class='cmt-doc'>主治医生：李卫国</text>
-            <view class='cmt-txt'>
-              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
-            </view>
-          </view>
-        </view>
-        <view class='cmt-item'>
-          <view class='cmt-hd'>
-            <image class='cmt-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
-            <text class='cmt-author'>王艳</text>
-            <text class='cmt-eval'>满意</text>
-            <text class='cmt-date'>2018-08-06</text>
-          </view>
-          <view class='cmt-bd'>
-            <text class='cmt-doc'>主治医生：李卫国</text>
-            <view class='cmt-txt'>
-              谢谢医生的耐心解答，白衣天使，医德双馨，好医生。
-            </view>
-          </view>
-        </view>
-        <!-- /评价列表项，循环 -->
-      </view>
-      <!-- /评价列表 -->
+  <scroll-view @scrolltolower="bindDownLoad" class='cmt-wrap' scroll-y style="height:{{scrollHeight}}px;">
+    <view class='cmt-top' wx:if='{{!showAllEval}}'>
+      <text class='cmt-eval'>满意(142)</text>
+      <text class='cmt-eval'>一般(142)</text>
+      <text class='cmt-eval'>不满意(142)</text>
     </view>
-    <!-- E 评价部分 -->
+    <!-- /评价顶部 -->
+    <view class='cmt-lst'>
+      <!-- /评价列表项，循环 -->
+      <repeat for='{{evaluateList}}' item='item'>
+        <view class='cmt-item'>
+          <view class='cmt-hd'>
+            <image class='cmt-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
+            <text class='cmt-author'>{{item.userName}}</text>
+            <text class='cmt-eval'>{{item.eval}}</text>
+            <text class='cmt-date'>{{item.dateFormat}}</text>
+          </view>
+          <view class='cmt-bd'>
+            <text class='cmt-doc'>主治医生：{{item.doctorName}}</text>
+            <view class='cmt-txt'>
+              {{item.evalContent}}
+            </view>
+          </view>
+        </view>
+      </repeat>
+      <!-- /评价列表项，循环 -->
+    </view>
+    <!-- /评价列表 -->
+    <zanLoadmore :loading.sync="isLoading"> </zanLoadmore>
+  </scroll-view>
+  <!-- E 评价部分 -->
 </template>
 
 <style lang="less" scoped>

@@ -5,6 +5,7 @@
   import zanLoadmore from '@/components/zanui/zan-loadmore'
   import doctorService from '@/api/doctor'
   import lang from '@/utils/lang'
+  import store from '@/store/utils'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '找专家'
@@ -63,6 +64,7 @@
         }
         this.filters[0].selectedValue = [e.province, e.city]
         this.$apply()
+        this.search()
       },
       handleDoctorChange(e) {
         if (e.detail.value === '全部') {
@@ -72,6 +74,7 @@
         }
         this.filters[1].selectedValue = e.detail.value
         this.$apply()
+        this.search()
       },
       handlePriceChange(e) {
         if (e.detail.value === '全部') {
@@ -81,6 +84,7 @@
         }
         this.filters[2].selectedValue = e.detail.value
         this.$apply()
+        this.search()
       },
       async bindDownLoad() {
         let arr = []
@@ -97,9 +101,15 @@
         this.doctorList = arr
         this.isLoading = false
         this.$apply()
+      },
+      handleGoDetail(item) {
+        store.save('doctor', item)
+        wepy.navigateTo({
+          url: '/pages/patient/doctor/detail'
+        })
       }
     }
-    search() {
+    async search() {
       const param = {}
       this.filters.map(filter => {
         if (filter.popType === 'region') {
@@ -111,12 +121,13 @@
             param['city'] = filter.selectedValue[1]
           }
         } else if (filter.popType === 'level') {
-          param['level'] = filter.selectedValue
+          param['level'] = filter.ranges[filter.selectedValue] ? filter.ranges[filter.selectedValue] : ''
         } else if (filter.popType === 'price') {
-          param['price'] = filter.selectedValue
+          param['price'] = filter.ranges[filter.selectedValue] ? filter.ranges[filter.selectedValue] : ''
         }
       })
-      doctorService.list().next()
+      this.doctorList = await doctorService.list().next(param)
+      this.$apply()
     }
   }
 </script>
@@ -149,7 +160,7 @@
     <view class='doc-lst'>
       <!-- 循环 doc-item即可  -->
       <repeat for='{{list}}'>
-        <view class='doc-item'>
+        <view class='doc-item' @tap='handleGoDetail({{item}})'>
           <image class='doc-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
           <view class='doc-profile'>
             <view class='doc-name'>{{item.name}}</view>

@@ -18,7 +18,15 @@
       zanRadio
     }
     data = {
-      selectItem: null
+      selectItem: null,
+      doctorId: ''
+    }
+    onLoad(e) {
+      // 从医生详情进入 doctorId 随 url 带入
+      if (e.doctorId) {
+        this.doctorId = e.doctorId
+        this.$apply()
+      }
     }
     onShow() {
       store.save('consulterList', [])
@@ -40,7 +48,7 @@
       next() {
         if (this.selectItem) {
           wepy.navigateTo({
-            url: '/pages/patient/consult/pay'
+            url: `/pages/patient/consult/pay?doctorId=${this.doctorId}`
           })
         } else {
           tips.toast('请选择咨询人', null, 'none')

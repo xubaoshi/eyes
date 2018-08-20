@@ -11,7 +11,15 @@
   export default class Index extends wepy.page {
     data = {
       placeholder: '请详细描述您的症状和身体状况，便于医生进行准确分析、我们会确保您的隐私安全。（请输入10~500字）',
-      uploadFileList: []
+      uploadFileList: [],
+      doctorId: ''
+    }
+    onLoad(e) {
+      // 从医生详情进入 doctorId 随 url 带入
+      if (e.doctorId) {
+        this.doctorId = e.doctorId
+        this.$apply()
+      }
     }
     methods = {
       bindFormSubmit(e) {
@@ -28,7 +36,7 @@
             data: str
           })
           wepy.navigateTo({
-            url: '/pages/patient/consult/consulter/list'
+            url: `/pages/patient/consult/consulter/list?doctorId=${this.doctorId}`
           })
         }
       },
@@ -81,7 +89,7 @@
           .catch(e => {})
       },
       onRemove(index) {
-        this.uploadFileList.splice(index)
+        this.uploadFileList.splice(index, 1)
         this.$apply()
       }
     }
@@ -141,7 +149,7 @@
             </view>
           </view>
         </repeat>
-        <view class='upload-item btn' @tap='handleUpload'>
+        <view class='upload-item btn' wx:if='{{uploadFileList.length < 6}}' @tap='handleUpload'>
           <text class='plus'>+</text>
         </view>
         <view class='upload-item upload-item-empty'>

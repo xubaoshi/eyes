@@ -13,6 +13,10 @@ export default class evaluate extends base {
       this.processExtraDataFunc.bind(this)
     )
   }
+  static async evaluateAdd(param) {
+    const url = `${this.baseUrl}${patientApi.evaluate.add}`
+    return this.post(url, param)
+  }
   static processEvalData(item) {
     item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
   }

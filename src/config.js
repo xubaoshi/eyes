@@ -3,7 +3,8 @@ export const baseUrl = 'https://www.easy-mock.com/mock/5b719f05ebd4a208cce29bb8'
 // 患者接口
 export const patientApi = {
   evaluate: {
-    list: '/api/evaluate/list' // 患者评价列表接口
+    list: '/api/evaluate/list', // 患者评价列表接口
+    add: '/api/evaluate/add' // 患者评价新增
   },
   banner: {
     list: '/api/banner/list' // 首页 banner 列表

@@ -15,7 +15,7 @@ export default class consult extends base {
   }
 
   static history() {
-    const url = `${this.baseUrl}${patientApi.evaluate.history}`
+    const url = `${this.baseUrl}${patientApi.consult.history}`
     return new Page(
       url,
       this.processEvalData.bind(this)

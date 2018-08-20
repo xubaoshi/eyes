@@ -13,6 +13,11 @@
         wepy.navigateTo({
           url: '/pages/patient/consult/history'
         })
+      },
+      handleGoConsult(item) {
+        wepy.navigateTo({
+          url: `/pages/patient/consult/detail?doctorId=${item.doctorId}`
+        })
       }
     }
   }
@@ -28,7 +33,7 @@
       </view>
       <!-- 循环.cst-item -->
       <repeat for='{{consult}}'>
-        <view class='cst-item'>
+        <view class='cst-item' @tap='handleGoConsult({{item}})'>
           <view class='cst-bd'>
             <image class='cst-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
             <view class='cst-info'>

@@ -1,23 +1,26 @@
 <script>
   import wepy from 'wepy'
   import consultService from '@/api/consult'
-  import store from '@/store/utils'
   import lang from '@/utils/lang'
+  import zanLoadmore from '@/components/zanui/zan-loadmore'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '历史记录'
+    }
+    components = {
+      zanLoadmore
     }
     data = {
       consultList: {},
       isLoading: false,
       scrollHeight: 0
     }
-    async onLoad() {
+    async onShow() {
       wepy.getSystemInfo().then(res => {
         this.scrollHeight = res.windowHeight + 160
         this.$apply()
       })
-      this.consultList = await consultService.list().next()
+      this.consultList = await consultService.history().next()
       this.$apply()
     }
     computed = {
@@ -40,16 +43,20 @@
         }
         this.isLoading = true
         this.$apply()
-        arr = await consultService.list().next()
+        arr = await consultService.history().next()
         arr.list = this.consultList.list.concat(arr.list)
         this.consultList = arr
         this.isLoading = false
         this.$apply()
       },
-      handleGoDetail(item) {
-        store.save('consult', item)
+      handleGoEval(item) {
         wepy.navigateTo({
-          url: '/pages/patient/consult/detail'
+          url: `/pages/patient/consult/evaluate?doctorId=${item.doctorId}`
+        })
+      },
+      handleGoConsult(item) {
+        wepy.navigateTo({
+          url: `/pages/patient/consult/detail?doctorId=${item.doctorId}`
         })
       }
     }
@@ -74,13 +81,14 @@
             </view>
           </view>
           <view class='cst-ft'>
-            <text wx:if="{{item.status === '0'}}" class='cst-ft-lnk cst-ft-lnk-primary'>评价</text>
-            <text wx:else="{{item.status === '1'}}" class='cst-ft-lnk'>再次咨询</text>
+            <text wx:if="{{item.status === '0'}}" @tap='handleGoEval({{item}})' class='cst-ft-lnk cst-ft-lnk-primary'>评价</text>
+            <text wx:else="{{item.status === '1'}}" @tap='handleGoConsult({{item}})' class='cst-ft-lnk'>再次咨询</text>
           </view>
         </view>
       </repeat>
     </view>
     <!-- E 咨询部分 -->
+    <zanLoadmore :loading.sync="isLoading"> </zanLoadmore>
   </scroll-view>
 </template>
 

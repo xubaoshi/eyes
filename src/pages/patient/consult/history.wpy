@@ -1,54 +1,87 @@
 <script>
   import wepy from 'wepy'
+  import consultService from '@/api/consult'
+  import store from '@/store/utils'
+  import lang from '@/utils/lang'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '历史记录'
     }
-    onLoad() {
-      console.log('this is home page')
+    data = {
+      consultList: {},
+      isLoading: false,
+      scrollHeight: 0
+    }
+    async onLoad() {
+      wepy.getSystemInfo().then(res => {
+        this.scrollHeight = res.windowHeight + 160
+        this.$apply()
+      })
+      this.consultList = await consultService.list().next()
+      this.$apply()
+    }
+    computed = {
+      list() {
+        if (lang.isEmpty(this.consultList.list)) {
+          return []
+        } else {
+          return this.consultList.list
+        }
+      }
+    }
+    methods = {
+      async bindDownLoad() {
+        let arr = []
+        if (parseInt(this.consultList.pages) === parseInt(this.consultList.pageNo)) {
+          return
+        }
+        if (this.isLoading) {
+          return
+        }
+        this.isLoading = true
+        this.$apply()
+        arr = await consultService.list().next()
+        arr.list = this.consultList.list.concat(arr.list)
+        this.consultList = arr
+        this.isLoading = false
+        this.$apply()
+      },
+      handleGoDetail(item) {
+        store.save('consult', item)
+        wepy.navigateTo({
+          url: '/pages/patient/consult/detail'
+        })
+      }
     }
   }
 </script>
 
 <template>
-  <view>
+  <scroll-view @scrolltolower="bindDownLoad" scroll-y style="height:{{scrollHeight}}px;">
     <!-- S 咨询部分 -->
     <view class='cst-lst cst-lst-history'>
       <!-- 循环.cst-item -->
-      <view class='cst-item'>
-        <view class='cst-bd'>
-          <image class='cst-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
-          <view class='cst-info'>
-            <view class='cst-info-bd'>
-              <text class='cst-name'>王大陆</text>
-              <text class='cst-date'>2018-06-03</text>
+      <repeat for='{{list}}'>
+        <view class='cst-item'>
+          <view class='cst-bd'>
+            <image class='cst-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
+            <view class='cst-info'>
+              <view class='cst-info-bd'>
+                <text class='cst-name'>{{item.name}}</text>
+                <text class='cst-date'>{{item.dateFormat}}</text>
+              </view>
+              <view class='cst-txt'>{{item.content}}</view>
             </view>
-            <view class='cst-txt'>左眼视力下降，戴眼镜几乎看不见，只能勉强看到影子。然后在你的建议下，做了眼底检…</view>
+          </view>
+          <view class='cst-ft'>
+            <text wx:if="{{item.status === '0'}}" class='cst-ft-lnk cst-ft-lnk-primary'>评价</text>
+            <text wx:else="{{item.status === '1'}}" class='cst-ft-lnk'>再次咨询</text>
           </view>
         </view>
-        <view class='cst-ft'>
-           <text class='cst-ft-lnk cst-ft-lnk-primary'>评价</text>
-        </view>
-      </view>
-       <view class='cst-item'>
-        <view class='cst-bd'>
-          <image class='cst-avatar' mode='aspectFill' src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
-          <view class='cst-info'>
-            <view class='cst-info-bd'>
-              <text class='cst-name'>王大陆</text>  
-              <text class='cst-eval'>满意</text>
-              <text class='cst-date'>2018-06-03</text>
-            </view>
-            <view class='cst-txt'>左眼视力下降，戴眼镜几乎看不见，只能勉强看到影子。然后在你的建议下，做了眼底检…</view>
-          </view>
-        </view>
-        <view class='cst-ft'>
-           <text class='cst-ft-lnk'>再次咨询</text>
-        </view>
-      </view>
+      </repeat>
     </view>
     <!-- E 咨询部分 -->
-  </view>
+  </scroll-view>
 </template>
 
 <style lang="less" scoped>

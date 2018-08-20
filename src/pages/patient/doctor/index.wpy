@@ -67,7 +67,7 @@
         this.search()
       },
       handleDoctorChange(e) {
-        if (e.detail.value === '全部') {
+        if (this.filters[1]['ranges'][e.detail.value] === '全部') {
           this.filters[1].checked = false
         } else {
           this.filters[1].checked = true
@@ -77,7 +77,7 @@
         this.search()
       },
       handlePriceChange(e) {
-        if (e.detail.value === '全部') {
+        if (this.filters[2]['ranges'][e.detail.value] === '全部') {
           this.filters[2].checked = false
         } else {
           this.filters[2].checked = true
@@ -121,9 +121,11 @@
             param['city'] = filter.selectedValue[1]
           }
         } else if (filter.popType === 'level') {
-          param['level'] = filter.ranges[filter.selectedValue] ? filter.ranges[filter.selectedValue] : ''
+          let selectedValue = filter.ranges[filter.selectedValue]
+          param['level'] = selectedValue && selectedValue !== '全部' ? selectedValue : ''
         } else if (filter.popType === 'price') {
-          param['price'] = filter.ranges[filter.selectedValue] ? filter.ranges[filter.selectedValue] : ''
+          let selectedValue = filter.ranges[filter.selectedValue]
+          param['price'] = selectedValue && selectedValue !== '全部' ? selectedValue : ''
         }
       })
       this.doctorList = await doctorService.list().next(param)

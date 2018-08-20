@@ -1,7 +1,7 @@
 import http from './http'
 
 export default class Pagination {
-  constructor (url, processFunc) {
+  constructor(url, processDataItemFunc, processExtraDataFunc) {
     // 数据访问地址
     this.url = url
     // 数据集合
@@ -11,7 +11,9 @@ export default class Pagination {
     // 加载数据条数
     this.count = 10
     // 数据处理函数
-    this.processFunc = processFunc
+    this.processDataItemFunc = processDataItemFunc
+    // 其他数据处理函数
+    this.processExtraDataFunc = processExtraDataFunc
     // 正在加载中
     this.loading = false
     // 参数
@@ -28,12 +30,14 @@ export default class Pagination {
     this.pages = 0
     // 当前页数
     this.pageNo = 0
+    // 其他数据
+    this.extra = {}
   }
 
   /**
    * 加载下一页数据
    */
-  async next (args) {
+  async next(args) {
     const param = {
       from: this.start,
       limit: this.count
@@ -73,6 +77,9 @@ export default class Pagination {
       this.records = data.records
       this.pages = data.pages
       this.pageNo = data.pageNo
+      if (this.processExtraDataFunc) {
+        this.extra = this.processExtraDataFunc(data)
+      }
       return this
     } finally {
       this.loading = false
@@ -82,13 +89,13 @@ export default class Pagination {
   /**
    * 恢复到第一页
    */
-  reset () {
+  reset() {
     this.empty = true
     this.toClear = true
     this.start = 0
     this.reachBottom = false
   }
-  clear () {
+  clear() {
     this.toClear = false
     this.start = 0
     this.list = []
@@ -97,10 +104,10 @@ export default class Pagination {
   /**
    * 处理数据（私有）
    */
-  _processData (data) {
-    if (this.processFunc) {
+  _processData(data) {
+    if (this.processDataItemFunc) {
       for (let i in data) {
-        const result = this.processFunc(data[i])
+        const result = this.processDataItemFunc(data[i])
         if (result) {
           data[i] = result
         }

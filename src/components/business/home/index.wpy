@@ -27,8 +27,8 @@
         if (lang.isEmpty(this.evaluate) || lang.isEmpty(this.evaluate.list)) {
           return []
         } else {
-          if (this.evaluate.list.length > 0) {
-            return this.evaluate.list.slice(0, 9)
+          if (this.evaluate.list.length > 10) {
+            return this.evaluate.list.slice(0, 10)
           } else {
             return this.evaluate.list
           }

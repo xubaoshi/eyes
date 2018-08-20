@@ -1,220 +1,43 @@
 <script>
   import wepy from 'wepy'
-  import filterBar from '@/components/common/filterBar'
   import region from '@/components/common/region'
-  import zanLoadmore from '@/components/zanui/zan-loadmore'
-  import doctorService from '@/api/doctor'
-  import lang from '@/utils/lang'
-  export default class Index extends wepy.page {
-    config = {
-      navigationBarTitleText: '找专家'
+  export default class filterBar extends wepy.component {
+    props = {
+      items: {}
     }
     components = {
-      filterBar,
-      region,
-      zanLoadmore
-    }
-    data = {
-      doctorList: {},
-      isLoading: false,
-      scrollHeight: 0,
-      filters: [{
-        label: '全部地区',
-        checked: false,
-        popType: 'region',
-        selectedValue: ['', '']
-      }, {
-        label: '医生等级',
-        checked: false,
-        selectedValue: '',
-        popType: 'level',
-        ranges: ['全部', '主任医师', '副主任医师', '住院医师']
-      }, {
-        label: '价格区间',
-        checked: false,
-        selectedValue: '',
-        popType: 'price',
-        ranges: ['全部', '0-10元', '11-30元', '31-50元', '50元以上']
-      }]
-    }
-    async onLoad() {
-      wepy.getSystemInfo().then(res => {
-        this.scrollHeight = res.windowHeight + 160
-        this.$apply()
-      })
-      this.doctorList = await doctorService.list().next()
-      this.$apply()
-    }
-    computed = {
-      list() {
-        if (lang.isEmpty(this.doctorList.list)) {
-          return []
-        } else {
-          return this.doctorList.list
-        }
-      }
+      region
     }
     methods = {
-      handleRegionChange(e) {
-        if (e.province === '全部' && e.city === '全部') {
-          this.filters[0].checked = false
-        } else {
-          this.filters[0].checked = true
+      handleRegion(e, b) {
+        console.log(e)
+        return {
         }
-        this.filters[0].selectedValue = [e.province, e.city]
-        this.$apply()
-      },
-      handleDoctorChange(e) {
-        if (e.detail.value === '全部') {
-          this.filters[1].checked = false
-        } else {
-          this.filters[1].checked = true
-        }
-        this.filters[1].selectedValue = e.detail.value
-        this.$apply()
-      },
-      handlePriceChange(e) {
-        if (e.detail.value === '全部') {
-          this.filters[2].checked = false
-        } else {
-          this.filters[2].checked = true
-        }
-        this.filters[2].selectedValue = e.detail.value
-        this.$apply()
-      },
-      async bindDownLoad() {
-        let arr = []
-        if (parseInt(this.doctorList.pages) === parseInt(this.doctorList.pageNo)) {
-          return
-        }
-        if (this.isLoading) {
-          return
-        }
-        this.isLoading = true
-        this.$apply()
-        arr = await doctorService.list().next()
-        arr.list = this.doctorList.list.concat(arr.list)
-        this.doctorList = arr
-        this.isLoading = false
-        this.$apply()
       }
-    }
-    search() {
-      const param = {}
-      this.filters.map(filter => {
-        if (filter.popType === 'region') {
-          if (filter.selectedValue[0] === '全部' || filter.selectedValue[1] === '全部') {
-            param['province'] = ''
-            param['city'] = ''
-          } else {
-            param['province'] = filter.selectedValue[0]
-            param['city'] = filter.selectedValue[1]
-          }
-        } else if (filter.popType === 'level') {
-          param['level'] = filter.selectedValue
-        } else if (filter.popType === 'price') {
-          param['price'] = filter.selectedValue
-        }
-      })
-      doctorService.list().next()
     }
   }
 </script>
 
 <template>
-  <scroll-view @scrolltolower="bindDownLoad" scroll-y style="height:{{scrollHeight}}px;">
-    <view class="wux-class wux-filterbar">
-      <view class="wux-filterbar__bd">
-        <view class="wux-filterbar__item {{ filters[0].checked ? 'wux-filterbar__item--checked' : '' }}">
-          <region target="{{filters[0].selectedValue}}" @regionChange.user='handleRegionChange'>
-            <text class="wux-filterbar__text">{{ filters[0].label }}</text>
-            <text class="wux-filterbar__icon wux-filterbar__icon--sort"></text>
+  <view class="wux-class wux-filterbar">
+    <view class="wux-filterbar__bd">
+      <repeat for="{{ items }}" wx:key="">
+        <view class="wux-filterbar__item {{ item.checked ? 'wux-filterbar__item--checked' : '' }}" @tap="onClick" data-index="{{ index }}">
+          <region wx:if="{{item.popType === 'region'}}" target="{{item.selectedValue}}" @regionChange.user='item.handleRegionChange'>
+            <text class="wux-filterbar__text">{{ item.label }}</text>
+            <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' }}"></text>
           </region>
-        </view>
-        <view class="wux-filterbar__item {{ filters[1].checked ? 'wux-filterbar__item--checked' : '' }}">
-          <picker @change="handleDoctorChange" value="{{filters[1].selectedValue}}" range="{{filters[1].ranges}}">
-            <text class="wux-filterbar__text">{{ filters[1].label }}</text>
-            <text class="wux-filterbar__icon wux-filterbar__icon--sort"></text>
+          <picker wx:else @change="item.handleRangesChange" value="{{item.selectedValue}}" range="{{item.ranges}}">
+            <text class="wux-filterbar__text">{{ item.label }}</text>
+            <text class="wux-filterbar__icon {{ 'wux-filterbar__icon--' + item.type }} {{ item.sort === 1 ? 'wux-filterbar__icon--sort-asc' : item.sort === -1 ? 'wux-filterbar__icon--sort-desc' : '' }}" wx:if="{{ item.type === 'radio' || item.type === 'checkbox' || item.type === 'sort' || item.type === 'filter' }}"></text>
           </picker>
-        </view>
-        <view class="wux-filterbar__item {{ filters[2].checked ? 'wux-filterbar__item--checked' : '' }}">
-          <picker @change="handlePriceChange" value="{{filters[2].selectedValue}}" range="{{filters[2].ranges}}">
-            <text class="wux-filterbar__text">{{ filters[2].label }}</text>
-            <text class="wux-filterbar__icon wux-filterbar__icon--sort"></text>
-          </picker>
-        </view>
-      </view>
-    </view>
-    <!-- S 医生列表 -->
-    <view class='doc-lst'>
-      <!-- 循环 doc-item即可  -->
-      <repeat for='{{list}}'>
-        <view class='doc-item'>
-          <image class='doc-avatar' mode='aspectFill' src='{{item.avatar}}'></image>
-          <view class='doc-profile'>
-            <view class='doc-name'>{{item.name}}</view>
-            <view class='doc-advantage'>
-              <text class='txt'>{{item.title}} {{item.hospitalName}}</text>
-              <text class='txt'>擅长：{{item.expert}}</text>
-            </view>
-            <view class='doc-cost'>
-              <text class='txt price'>{{item.price}}元</text>
-              <text class='txt' wx:if='{{item.buyNum}}'>{{item.buyNum}}人购买</text>
-            </view>
-          </view>
         </view>
       </repeat>
-      <zanLoadmore :loading.sync="isLoading"> </zanLoadmore>
     </view>
-    <!-- E 医生列表 -->
-  </scroll-view>
+  </view>
 </template>
 
 <style lang="less" scoped>
-  .doc-lst {
-    padding: 0 30rpx;
-    background-color: #fff;
-    overflow: hidden;
-    .doc-item {
-      overflow: hidden;
-      padding: 30rpx 30rpx 30rpx 150rpx;
-      margin-bottom: -1rpx;
-      border-bottom: 1rpx solid #e5e5e5;
-      .doc-avatar {
-        float: left;
-        margin-left: -150rpx;
-        width: 120rpx;
-        height: 120rpx;
-        border-radius: 50%;
-      }
-    }
-    .doc-profile {
-      .doc-name {
-        font-size: 34rpx;
-        line-height: 48rpx;
-      }
-      .doc-advantage {
-        margin: 15rpx 0 25rpx;
-        .txt {
-          display: block;
-          margin-bottom: 10rpx;
-          line-height: 36rpx;
-          color: #999;
-        }
-      }
-      .doc-cost {
-        .txt {
-          font-size: 26rpx;
-          color: #999;
-        }
-        .price {
-          margin-right: 20rpx;
-          font-size: 34rpx;
-          color: #e4393c;
-        }
-      }
-    }
-  }
   .wux-filterbar {
     position: relative;
     z-index: 1000;
@@ -238,9 +61,7 @@
         border-right: 0;
       }
       &--checked {
-        .wux-filterbar__text {
-          color: #0ed6c2;
-        }
+        color: linear-gradient(-180deg, #0ed6c2 0%, #15c4a6 100%);
       }
     }
     &__icon {

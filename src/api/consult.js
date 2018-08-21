@@ -16,11 +16,14 @@ export default class consult extends base {
 
   static history() {
     const url = `${this.baseUrl}${patientApi.consult.history}`
-    return new Page(
-      url,
-      this.processEvalData.bind(this)
-    )
+    return new Page(url, this.processEvalData.bind(this))
   }
+
+  static async detail(param) {
+    const url = `${this.baseUrl}${patientApi.consult.detail}`
+    return await this.get(url, param)
+  }
+
   static processEvalData(item) {
     item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
   }

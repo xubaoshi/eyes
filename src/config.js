@@ -19,8 +19,9 @@ export const patientApi = {
     vedio: '/api/upload/vedio' // 视频上传
   },
   consult: {
-    list: '/api/consult/list',
-    history: '/api/consult/history/list',
+    list: '/api/consult/list', // 我的咨询
+    history: '/api/consult/history/list', // 历史咨询
+    detail: '/api/consult/detail', // 咨询详情（再次咨询）
     consulter: {
       list: '/api/consult/consulter/list', // 咨询人列表
       add: '/api/consult/consulter/add' // 咨询人新增

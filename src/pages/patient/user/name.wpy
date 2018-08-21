@@ -23,7 +23,7 @@
       <!-- /field -->
     </view>
     <!-- E 表单 -->
-    <button type='primary'>保存</button>
+    <button type='primary'>保 存</button>
 
   </view>
 </template>

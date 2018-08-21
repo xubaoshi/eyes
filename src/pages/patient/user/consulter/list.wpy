@@ -12,10 +12,31 @@
 
 <template>
   <view>
-    this is patient user consulter list page
+      <!-- S 表单列表 -->
+    <view class='ui-form'>
+      <view class='field field-col'>
+        <view class='field-tit'>
+          自己
+        <text class='field-sub-tit'>男，27岁，王小陆</text>
+        </view>
+       
+        <view class='field-tail'>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
+      </view>
+      <!-- /field -->
+    </view>
+    <!-- E 表单 -->
+    <button type='primary'>新 增</button>
   </view>
 </template>
 
 <style lang="less" scoped>
+@import url('../../../../styles/ui/ui_form.less');
+.ui-form{
+  margin-top: 30rpx;
+  .field{
 
+  }
+}
 </style>

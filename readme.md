@@ -134,8 +134,8 @@ eslint（插件）
               --myUser.wpy //我发展的用户（sorrowhere）
               --preview.wpy//我的推荐图片（sorrowhere）
           --consulter
-              --add.wpy    //咨询人信息（sorrowhere）
-              --list.wpy   //咨询人（sorrowhere）
+              --add.wpy    //添加咨询人（sorrowhere）
+              --list.wpy   //咨询人信息（sorrowhere）
       --index.wpy          //首页（sorrowhere 完成8.16）
 ```
 

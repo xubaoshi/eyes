@@ -126,7 +126,7 @@ eslint（插件）
             --evalateList.wpy //医生评价列表（sorrowhere 完成 8.16）
         --user
             --info.wpy     //个人信息（sorrowhere  完成8.21）
-            --name.wpy     //修改昵称（sorrowhere）
+            --name.wpy     //修改昵称（sorrowhere 完成8.21）
             --income.wpy   //收入明细（sorrowhere）
             --cash.wpy     //选择银行（提现）（sorrowhere）
           --share

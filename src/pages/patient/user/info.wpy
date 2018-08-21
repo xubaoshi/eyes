@@ -12,9 +12,37 @@
 
 <template>
   <view>
+    <!-- S 表单列表 -->
+    <view class='ui-form'>
+      <view class='field field-xl'>
+        <text class='field-tit'>头像</text>
+        <view class='field-tail'>
+          <image class='avatar' mode='aspectFill' src='http://pic.9ht.com/up/2016-12/14810057988524092.jpg'></image>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
+      </view>
+      <!-- /field -->
+      <view class='field'>
+        <text class='field-tit'>昵称</text>
+        <view class='field-tail'>
+          <text class='txt'>Manu</text>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
+      </view>
+      <!-- /field -->
+      <view class='field'>
+        <text class='field-tit'>手机号码</text>
+        <view class='field-tail'>
+          <text class='txt'>18551689900</text>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
+      </view>
+      <!-- /field -->
+    </view>
+    <!-- E 表单 -->
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  @import url('../../../styles/ui/ui_form.less');
 </style>

@@ -17,24 +17,30 @@
         <view class='field-icon orange'>
           <text class='iconfont  icon-renminbi '></text>
         </view>
-        <text class='txt'>我的账户</text>
-        <text class='iconfont  icon-zhankai arrow'></text>
+        <text class='field-tit'>我的账户</text>
+        <view class='field-tail'>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
       </view>
       <!-- /field -->
       <view class='field'>
         <view class='field-icon blue'>
           <text class='iconfont  icon-shouru '></text>
         </view>
-        <text class='txt'>收入明细</text>
-        <text class='iconfont  icon-zhankai arrow'></text>
+        <text class='field-tit'>收入明细</text>
+       <view class='field-tail'>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
       </view>
       <!-- /field -->
       <view class='field'>
         <view class='field-icon orange'>
           <text class='iconfont  icon-qianbao '></text>
         </view>
-        <text class='txt'>提现</text>
-        <text class='iconfont  icon-zhankai arrow'></text>
+        <text class='field-tit'>提现</text>
+        <view class='field-tail'>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
       </view>
       <!-- /field -->
     </view>
@@ -45,8 +51,10 @@
         <view class='field-icon green'>
           <text class='iconfont  icon-wode-active '></text>
         </view>
-        <text class='txt'>咨询人信息</text>
-        <text class='iconfont  icon-zhankai arrow'></text>
+        <text class='field-tit'>咨询人信息</text>
+        <view class='field-tail'>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
       </view>
       <!-- /field -->
     </view>
@@ -57,8 +65,10 @@
         <view class='field-icon blue'>
           <text class='iconfont  icon-changjingtuijianpitchon '></text>
         </view>
-        <text class='txt'>推荐给朋友</text>
-        <text class='iconfont  icon-zhankai arrow'></text>
+        <text class='field-field-tit'>推荐给朋友</text>
+        <view class='field-tail'>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
       </view>
       <!-- /field -->
     </view>
@@ -69,8 +79,10 @@
         <view class='field-icon gray'>
           <text class='iconfont  icon-htmal5icon31 '></text>
         </view>
-        <text class='txt'>在线客服</text>
-        <text class='iconfont  icon-zhankai arrow'></text>
+        <text class='field-field-tit'>在线客服</text>
+        <view class='field-tail'>
+          <text class='iconfont  icon-zhankai arrow'></text>
+        </view>
       </view>
       <!-- /field -->
     </view>
@@ -80,6 +92,9 @@
 
 <style lang="less" scoped>
   @import url('../../../styles/ui/ui_form.less');
+  page{
+    padding-bottom: 0;
+  }
   .user-panel {
     margin-bottom: 20rpx;
     padding: 50rpx 30rpx;

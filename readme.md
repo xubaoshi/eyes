@@ -130,9 +130,9 @@ eslint（插件）
             --income.wpy   //收入明细（sorrowhere 完成8.22）
             --cash.wpy     //选择银行（提现）（sorrowhere）
           --share
-              --index.wpy  //推荐给朋友（sorrowhere）
+              --index.wpy  //推荐给朋友（sorrowhere 完成8.22）
               --myUser.wpy //我发展的用户（sorrowhere）
-              --preview.wpy//我的推荐图片（sorrowhere）
+              --preview.wpy//我的推荐图片（sorrowhere 完成8.22）
           --consulter
               --add.wpy    //添加咨询人（sorrowhere）
               --list.wpy   //咨询人信息（sorrowhere  完成8.21）

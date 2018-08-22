@@ -27,9 +27,9 @@
     }
     config = {
       pages: [
+        'pages/patient/index',
         'pages/patient/user/consulter/list',
         'pages/patient/user/name',
-        'pages/patient/index',
         // ================================
         // consult
         'pages/patient/consult/add',

@@ -65,7 +65,7 @@
         <view class='field-icon blue'>
           <text class='iconfont  icon-changjingtuijianpitchon '></text>
         </view>
-        <text class='field-field-tit'>推荐给朋友</text>
+        <text class='field-tit'>推荐给朋友</text>
         <view class='field-tail'>
           <text class='iconfont  icon-zhankai arrow'></text>
         </view>
@@ -79,7 +79,7 @@
         <view class='field-icon gray'>
           <text class='iconfont  icon-htmal5icon31 '></text>
         </view>
-        <text class='field-field-tit'>在线客服</text>
+        <text class='field-tit'>在线客服</text>
         <view class='field-tail'>
           <text class='iconfont  icon-zhankai arrow'></text>
         </view>

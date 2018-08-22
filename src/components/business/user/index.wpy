@@ -24,7 +24,7 @@
       },
       handleGoConsulter() {
         wepy.navigateTo({
-          url: '/pages/patient/consult/consulter/list'
+          url: '/pages/patient/consult/consulter/list?from=user'
         })
       },
       handleGoShare() {

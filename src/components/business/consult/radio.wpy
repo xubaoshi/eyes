@@ -5,7 +5,8 @@
       items: {
         twoWay: true
       },
-      type: {}
+      type: {},
+      showRadio: {}
     }
     methods = {
       radioChange(e) {
@@ -23,6 +24,7 @@
             <view class="zan-radio__icon-inside"></view>
           </view>
           <radio
+            wx:if='{{showRadio}}'
             class="zan-radio__origin"
             value="{{ item.value }}"
             checked="{{ item.checked }}"

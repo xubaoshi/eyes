@@ -19,14 +19,18 @@
     }
     data = {
       selectItem: null,
-      doctorId: ''
+      doctorId: '',
+      showRadio: true
     }
     onLoad(e) {
       // 从医生详情进入 doctorId 随 url 带入
       if (e.doctorId) {
         this.doctorId = e.doctorId
-        this.$apply()
       }
+      if (e.from === 'user') {
+        this.showRadio = false
+      }
+      this.$apply()
     }
     onShow() {
       store.save('consulterList', [])
@@ -67,10 +71,10 @@
   <view>
     <view class="zan-panel">
       <view class='user-list'>
-        <zanRadio :items.sync="items" @change.user='handleRadioChange'></zanRadio>
+        <zanRadio :items.sync="items" :showRadio.sync='showRadio' @change.user='handleRadioChange'></zanRadio>
       </view>
     </view>
-    <view class="zan-panel add-wrap">
+    <view class="zan-panel add-wrap" wx:if='{{showRadio}}'>
       <view class='add-btn' @tap='add'>
         <view class='plus-wrap'>
           <text class='plus'>+</text>
@@ -80,7 +84,8 @@
       </view>
     </view>
   </view>
-  <button @tap='next' class='next-btn'>下一步</button>
+  <button wx:if='{{showRadio}}' @tap='next' class='next-btn'>下一步</button>
+  <button wx:else @tap='add' class='next-btn btn-add'>新 增</button>
 </template>
 
 <style lang="less" scoped>
@@ -130,5 +135,9 @@
     font-weight: normal;
     color: #ffffff;
     text-align: center;
+  }
+
+  .btn-add {
+    margin-top: 20rpx;
   }
 </style>

@@ -14,11 +14,22 @@
 
 <template>
   <view>
-    this is patient share home page
-    <canvas  style="width: 200px; height: 200px;" canvas-id="qrcode" wx:if="{{coupon.supportType !=1}}"></canvas>
+    
+    <!-- S 分享 -->
+    <view class='share-wrap'>
+      <view class='share-bd'>
+        <view class='share-qcode' canvas-id="qrcode" wx:if="{{coupon.supportType !=1}}"></view>
+        <text class='share-tit'>我的推荐二维码</text>
+        <text class='share-sub-tit'>你的朋友扫描关注注册成功后成为你发展的用户</text>
+      </view>
+    </view>
+    <!-- E 分享 -->
+    <button type='primary'>预览推荐图片</button>
+    <button type='default'>我的用户</button>
+    
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  @import url('../../../../styles/components/c_share.less');
 </style>

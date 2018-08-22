@@ -1,6 +1,29 @@
 <script>
   import wepy from 'wepy'
-  export default class ConsultIndex extends wepy.component {}
+  export default class ConsultIndex extends wepy.component {
+    methods = {
+      handleGoInfo() {
+        wepy.navigateTo({
+          url: '/pages/patient/consult/info'
+        })
+      },
+      handleGoAccount() {
+        wepy.navigateTo({
+          url: '/pages/patient/consult/info'
+        })
+      },
+      handleGoIncome() {
+      },
+      handleGoCash() {
+      },
+      handleGoConsulter() {
+      },
+      handleGoShare() {
+      },
+      handleGoService() {
+      }
+    }
+  }
 </script>
 
 <template>
@@ -28,7 +51,7 @@
           <text class='iconfont  icon-shouru '></text>
         </view>
         <text class='field-tit'>收入明细</text>
-       <view class='field-tail'>
+        <view class='field-tail'>
           <text class='iconfont  icon-zhankai arrow'></text>
         </view>
       </view>
@@ -92,7 +115,7 @@
 
 <style lang="less" scoped>
   @import url('../../../styles/ui/ui_form.less');
-  page{
+  page {
     padding-bottom: 0;
   }
   .user-panel {

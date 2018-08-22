@@ -39,6 +39,11 @@
     methods = {
       videoErrorCallback(e) {
         console.log(e)
+      },
+      handleGoConsultAdd(doctorId) {
+        wepy.navigateTo({
+          url: `/pages/patient/consult/add?doctorId=${doctorId}`
+        })
       }
     }
   }
@@ -85,7 +90,7 @@
     <!-- E 聊天界面 -->
     <!-- S 底部立即咨询悬浮按钮 -->
     <view class='fix-btm'>
-      <button type='primary'>快速回复</button>
+      <button type='primary' @tap='handleGoConsultAdd({{doctorId}})'>快速回复</button>
     </view>
     <!-- E 底部立即咨询悬浮按钮 -->
   </view>

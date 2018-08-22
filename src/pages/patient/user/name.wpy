@@ -12,10 +12,25 @@
 
 <template>
   <view>
-    this is patient user name page
+    <!-- S 表单列表 -->
+    <view class='ui-form'>
+      <view class='field'>
+        <text class='field-tit'>昵称</text>
+        <view class='field-tail'>
+          <text class='txt'>Manu</text>
+        </view>
+      </view>
+      <!-- /field -->
+    </view>
+    <!-- E 表单 -->
+    <button type='primary'>保 存</button>
+
   </view>
 </template>
 
 <style lang="less" scoped>
-
+@import url('../../../styles/ui/ui_form.less');
+.ui-form{
+  margin-top: 30rpx;
+}
 </style>

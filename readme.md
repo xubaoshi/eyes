@@ -125,8 +125,8 @@ eslint（插件）
             --detail.wpy   //医生详情（sorrowhere 完成 8.17）
             --evalateList.wpy //医生评价列表（sorrowhere 完成 8.16）
         --user
-            --info.wpy     //个人信息（sorrowhere）
-            --name.wpy     //修改昵称（sorrowhere）
+            --info.wpy     //个人信息（sorrowhere  完成8.21）
+            --name.wpy     //修改昵称（sorrowhere 完成8.21）
             --income.wpy   //收入明细（sorrowhere）
             --cash.wpy     //选择银行（提现）（sorrowhere）
           --share
@@ -134,8 +134,8 @@ eslint（插件）
               --myUser.wpy //我发展的用户（sorrowhere）
               --preview.wpy//我的推荐图片（sorrowhere）
           --consulter
-              --add.wpy    //咨询人信息（sorrowhere）
-              --list.wpy   //咨询人（sorrowhere）
+              --add.wpy    //添加咨询人（sorrowhere）
+              --list.wpy   //咨询人信息（sorrowhere  完成8.21）
       --index.wpy          //首页（sorrowhere 完成8.16）
 ```
 

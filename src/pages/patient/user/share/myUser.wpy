@@ -12,10 +12,30 @@
 
 <template>
   <view>
-    this is patient share home page
+    <!-- S 收入明细 -->
+    <view class='user-lst user-dev-lst'>
+      <!-- 循环user-item -->
+      <view class='user-item'>
+        <image class='avatar' mode='aspectFill' src='http://pic.9ht.com/up/2016-12/14810057988524092.jpg'></image>
+        <view class='user-hd'>
+          加拿大电鳗
+          <text class='date'>12:21</text>
+        </view>
+      </view>
+      <!-- / user-item -->
+      <view class='user-item'>
+        <image class='avatar' mode='aspectFill' src='http://pic.9ht.com/up/2016-12/14810057988524092.jpg'></image>
+        <view class='user-hd'>
+          加拿大电鳗
+          <text class='date'>星期五</text>
+        </view>
+      </view>
+      <!-- / user-item -->
+    </view>
+    <!-- E 收入明细 -->
   </view>
 </template>
 
 <style lang="less" scoped>
-
+@import url('../../../../styles/components/c_user.less');
 </style>

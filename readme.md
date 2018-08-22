@@ -131,7 +131,7 @@ eslint（插件）
             --cash.wpy     //选择银行（提现）（sorrowhere）
           --share
               --index.wpy  //推荐给朋友（sorrowhere 完成8.22）
-              --myUser.wpy //我发展的用户（sorrowhere）
+              --myUser.wpy //我发展的用户（sorrowhere 完成8.22）
               --preview.wpy//我的推荐图片（sorrowhere 完成8.22）
           --consulter
               --add.wpy    //添加咨询人（sorrowhere）

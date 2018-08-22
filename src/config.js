@@ -29,6 +29,9 @@ export const patientApi = {
   },
   doctor: {
     list: '/api/doctor/list' // 找医生列表（详情页共用）
+  },
+  user: {
+    info: '/api/user/info'
   }
 }
 

@@ -4,24 +4,35 @@
     methods = {
       handleGoInfo() {
         wepy.navigateTo({
-          url: '/pages/patient/consult/info'
+          url: '/pages/patient/user/info'
         })
       },
       handleGoAccount() {
         wepy.navigateTo({
-          url: '/pages/patient/consult/info'
+          url: '/pages/patient/user/account'
         })
       },
       handleGoIncome() {
+        wepy.navigateTo({
+          url: '/pages/patient/user/income'
+        })
       },
       handleGoCash() {
+        wepy.navigateTo({
+          url: '/pages/patient/user/cash'
+        })
       },
       handleGoConsulter() {
+        wepy.navigateTo({
+          url: '/pages/patient/consult/consulter/list'
+        })
       },
       handleGoShare() {
+        wepy.navigateTo({
+          url: '/pages/patient/user/share/index'
+        })
       },
-      handleGoService() {
-      }
+      handleGoService() {}
     }
   }
 </script>
@@ -29,14 +40,14 @@
 <template>
   <view>
     <!-- S 个人信息 -->
-    <view class='user-panel'>
+    <view class='user-panel' @tap='handleGoInfo'>
       <image class='avatar' mode='aspectFill' src='http://pic.9ht.com/up/2016-12/14810057988524092.jpg'></image>
       <text class='txt'>Manu</text>
     </view>
     <!-- E 个人信息 -->
     <!-- S 表单列表 -->
     <view class='ui-form'>
-      <view class='field'>
+      <view class='field' @tap='handleGoAccount'>
         <view class='field-icon orange'>
           <text class='iconfont  icon-renminbi '></text>
         </view>
@@ -46,7 +57,7 @@
         </view>
       </view>
       <!-- /field -->
-      <view class='field'>
+      <view class='field' @tap='handleGoIncome'>
         <view class='field-icon blue'>
           <text class='iconfont  icon-shouru '></text>
         </view>
@@ -56,7 +67,7 @@
         </view>
       </view>
       <!-- /field -->
-      <view class='field'>
+      <view class='field' @tap='handleGoCash'>
         <view class='field-icon orange'>
           <text class='iconfont  icon-qianbao '></text>
         </view>
@@ -70,7 +81,7 @@
     <!-- E 表单 -->
     <!-- S 表单列表 -->
     <view class='ui-form'>
-      <view class='field'>
+      <view class='field' @tap='handleGoConsulter'>
         <view class='field-icon green'>
           <text class='iconfont  icon-wode-active '></text>
         </view>
@@ -84,7 +95,7 @@
     <!-- E 表单 -->
     <!-- S 表单列表 -->
     <view class='ui-form'>
-      <view class='field'>
+      <view class='field' @tap='handleGoShare'>
         <view class='field-icon blue'>
           <text class='iconfont  icon-changjingtuijianpitchon '></text>
         </view>
@@ -99,7 +110,7 @@
     <!-- S 表单列表 -->
     <view class='ui-form'>
       <view class='field'>
-        <view class='field-icon gray'>
+        <view class='field-icon gray' @tap='handleGoService'>
           <text class='iconfont  icon-htmal5icon31 '></text>
         </view>
         <text class='field-tit'>在线客服</text>

@@ -127,12 +127,12 @@ eslint（插件）
         --user
             --info.wpy     //个人信息（sorrowhere  完成8.21）
             --name.wpy     //修改昵称（sorrowhere 完成8.21）
-            --income.wpy   //收入明细（sorrowhere）
-            --cash.wpy     //选择银行（提现）（sorrowhere）
+            --income.wpy   //收入明细（sorrowhere 完成8.22）
+            --cash.wpy     //选择银行（提现）（sorrowhere 完成8.22）
           --share
-              --index.wpy  //推荐给朋友（sorrowhere）
-              --myUser.wpy //我发展的用户（sorrowhere）
-              --preview.wpy//我的推荐图片（sorrowhere）
+              --index.wpy  //推荐给朋友（sorrowhere 完成8.22）
+              --myUser.wpy //我发展的用户（sorrowhere 完成8.22）
+              --preview.wpy//我的推荐图片（sorrowhere 完成8.22）
           --consulter
               --add.wpy    //添加咨询人（sorrowhere）
               --list.wpy   //咨询人信息（sorrowhere  完成8.21）

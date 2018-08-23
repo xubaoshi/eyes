@@ -12,10 +12,29 @@
 
 <template>
   <view>
-    this is patient user cash page
+    <!-- S 分享 -->
+    <view class='bank-wrap'>
+      <view class='form'>
+        <view class='item'>
+          <text class='tit'>到账银行卡</text>
+          <view class='bd'>
+            <text class='bank-name'>招商银行</text>
+            <text class='note'>申请提现后，1-2天内到账</text>
+            <text class='iconfont icon-zhankai arrow'></text>
+          </view>
+        </view>
+        <view class='item item-cash'>
+          <text class='tit'>提现金额</text>
+          <view class='bd'>￥ 200</view>
+        </view>
+      </view>
+      <button type='primary'>提现申请</button>
+    </view>
+    <!-- E 分享 -->
+    <button type='default'>历 史</button>
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  @import url('../../../styles/module/m_bank.less');
 </style>

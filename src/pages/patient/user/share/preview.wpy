@@ -14,11 +14,39 @@
 
 <template>
   <view>
-    this is patient preview home page
-    <canvas  style="width: 200px; height: 200px;" canvas-id="qrcode" wx:if="{{coupon.supportType !=1}}"></canvas>
+    <!-- S 分享 -->
+    <view class='share-wrap'>
+      <view class='share-bd'>
+        <view class='share-qcode' canvas-id="qrcode" wx:if="{{coupon.supportType !=1}}"></view>
+        <text class='share-tit'>欢迎加入爱眼康公众号</text>
+        <text class='share-sub-tit'>最专业的眼科咨询中心</text>
+      </view>
+      <view class='share-ft'>
+        <view class='share-ft-item'>
+          <view class='icon-wrap orange'>
+            <text class='iconfont icon-yishengmenzhen'></text>
+          </view>
+          <text class='txt'>100%专业医生</text>
+        </view>
+        <view class='share-ft-item'>
+          <view class='icon-wrap blue'>
+            <text class='iconfont icon-icon_huifu-mian'></text>
+          </view>
+          <text class='txt'>及速的回复</text>
+        </view>
+        <view class='share-ft-item'>
+          <view class='icon-wrap green'>
+            <text class='iconfont icon-shangcheng2'></text>
+          </view>
+          <text class='txt'>你最需要的商品</text>
+        </view>
+      </view>
+    </view>
+    <!-- E 分享 -->
+    <button type='primary'>图片保存</button>
   </view>
 </template>
 
 <style lang="less" scoped>
-
+  @import url('../../../../styles/components/c_share.less');
 </style>

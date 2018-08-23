@@ -1,5 +1,12 @@
 <script>
   import wepy from 'wepy'
+  import store from '@/store/utils'
+  import {
+    connect
+  } from 'wepy-redux'
+  @connect({
+    user: store.get('user')
+  })
   export default class ConsultIndex extends wepy.component {
     methods = {
       handleGoInfo() {
@@ -34,6 +41,9 @@
       },
       handleGoService() {}
     }
+    onLoad() {
+      console.log(this.user)
+    }
   }
 </script>
 
@@ -41,8 +51,8 @@
   <view>
     <!-- S 个人信息 -->
     <view class='user-panel' @tap='handleGoInfo'>
-      <image class='avatar' mode='aspectFill' src='http://pic.9ht.com/up/2016-12/14810057988524092.jpg'></image>
-      <text class='txt'>Manu</text>
+      <image class='avatar' mode='aspectFill' src='{{user.avatar}}'></image>
+      <text class='txt'>{{user.name}}</text>
     </view>
     <!-- E 个人信息 -->
     <!-- S 表单列表 -->

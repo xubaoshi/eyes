@@ -7,6 +7,7 @@
   import authService from '@/api/auth'
   import homeService from '@/api/home'
   import consultService from '@/api/consult'
+  import userService from '@/api/user'
   // import wxUtils from '@/utils/wx'
   import base from '@/mixins/base'
   import tabBar from '@/components/common/tabBar'
@@ -54,6 +55,7 @@
       // 获取 患者评价
       await homeService.info()
       consultService.list()
+      userService.info()
     }
     methods = {
       handleTabChange(currentIndex) {

@@ -12,6 +12,7 @@ export default handleActions(
     }
   },
   {
+    user: null, // 用户
     home: null, // 首页
     evaluate: null, // 患者评价(首页)
     consulterList: null, // 咨询者列表,

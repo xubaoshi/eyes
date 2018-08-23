@@ -31,7 +31,11 @@ export const patientApi = {
     list: '/api/doctor/list' // 找医生列表（详情页共用）
   },
   user: {
-    info: '/api/user/info'
+    info: '/api/user/info', // 个人信息 （个人信息tab页所需数据）
+    share: {
+      qrcode: '/api/share/qrcode', // 个人信息 推荐给朋友二维码
+      users: '/api/share/users' // 个人信息 推荐给朋友我发展的用户
+    }
   }
 }
 

@@ -27,7 +27,6 @@
     }
     config = {
       pages: [
-        'pages/patient/user/cash',
         'pages/patient/index',
         // ================================
         // consult
@@ -53,6 +52,7 @@
         'pages/patient/user/consulter/list',
         'pages/patient/user/share/myUser',
         'pages/patient/user/share/index',
+        'pages/patient/user/cash',
         'pages/patient/user/share/preview'
         // ================================
       ],

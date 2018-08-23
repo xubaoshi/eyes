@@ -12,7 +12,8 @@ export default handleActions(
     }
   },
   {
-    user: null, // 用户
+    user: null, // 用户信息
+    shareQrcode: null, // 用户
     home: null, // 首页
     evaluate: null, // 患者评价(首页)
     consulterList: null, // 咨询者列表,

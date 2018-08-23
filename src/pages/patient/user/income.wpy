@@ -1,11 +1,17 @@
 <script>
   import wepy from 'wepy'
+  import userService from '@/api/user'
   export default class Index extends wepy.page {
     config = {
       navigationBarTitleText: '收入明细'
     }
-    onLoad() {
-      console.log('this is home page')
+    data = {
+      incomes: []
+    }
+    async onLoad() {
+      const arr = await userService.income()
+      this.incomes = arr
+      this.$apply()
     }
   }
 </script>
@@ -14,32 +20,25 @@
   <view>
     <!-- S 收入明细 -->
     <view class='user-lst'>
-      <!-- 循环user-item -->
-      <view class='user-item'>
-        <image class='avatar' mode='aspectFill' src='http://pic.9ht.com/up/2016-12/14810057988524092.jpg'></image>
-        <view class='user-hd'>
-          加拿大电鳗
-          <text class='date'>12:21</text>
+      <repeat for='{{incomes}}'>
+        <!-- 循环user-item -->
+        <view class='user-item'>
+          <image class='avatar' mode='aspectFill' src='{{item.avatar}}'></image>
+          <view class='user-hd'>
+             {{item.name}}
+            <text class='date'>12:21</text>
+          </view>
+          <view class='user-bd'>
+            <text class='txt'> {{item.content}}</text>
+          </view>
         </view>
-        <view class='user-bd'>
-          <text class='txt'>一级用户购买护理液 200元，收益10元</text>
-        </view>
-      </view> <!-- / user-item -->
-      <view class='user-item'>
-        <image class='avatar' mode='aspectFill' src='http://pic.9ht.com/up/2016-12/14810057988524092.jpg'></image>
-        <view class='user-hd'>
-          加拿大电鳗
-          <text class='date'>12:21</text>
-        </view>
-        <view class='user-bd'>
-          <text class='txt'>一级用户购买护理液 200元，收益10元</text>
-        </view>
-      </view> <!-- / user-item -->
+        <!-- / user-item -->
+      </repeat>
     </view>
     <!-- E 收入明细 -->
   </view>
 </template>
 
 <style lang="less" scoped>
-@import url('../../../styles/components/c_user.less');
+  @import url('../../../styles/components/c_user.less');
 </style>

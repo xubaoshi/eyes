@@ -30,7 +30,7 @@
       this.doctorId = e.doctorId
       this.$apply()
     }
-    async onShow(e) {
+    async onShow() {
       this.consult = await consultService.detail({
         doctorId: this.doctorId
       })

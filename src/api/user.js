@@ -26,4 +26,13 @@ export default class user extends base {
     });
     return arr
   }
+
+  static async income(param) {
+    const url = `${this.baseUrl}${patientApi.user.income}`
+    const arr = await this.get(url, param)
+    arr.forEach(item => {
+      item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
+    });
+    return arr
+  }
 }

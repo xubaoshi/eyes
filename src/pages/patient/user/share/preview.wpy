@@ -27,7 +27,7 @@
           canvasId: 'qrcode'
         }).then((res) => {
           wepy.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath,
+            filePath: res.tempFilePath
           })
         })
       }

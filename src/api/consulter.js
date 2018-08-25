@@ -14,6 +14,6 @@ export default class home extends base {
   }
   static async consulterAdd(param) {
     const url = `${this.baseUrl}${patientApi.consult.consulter.add}`
-    return this.post(url, param)
+    return await this.post(url, param)
   }
 }

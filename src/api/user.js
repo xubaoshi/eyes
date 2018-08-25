@@ -23,7 +23,7 @@ export default class user extends base {
     const arr = await this.get(url, param)
     arr.forEach(item => {
       item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
-    });
+    })
     return arr
   }
 
@@ -32,7 +32,12 @@ export default class user extends base {
     const arr = await this.get(url, param)
     arr.forEach(item => {
       item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
-    });
+    })
     return arr
+  }
+
+  static async updateUser(param) {
+    const url = `${this.baseUrl}${patientApi.user.update}`
+    return await this.post(url, param)
   }
 }

@@ -33,6 +33,7 @@ export const patientApi = {
   user: {
     info: '/api/user/info', // 个人信息 （个人信息tab页所需数据）
     income: '/api/user/income', // 个人信息 （个人信息tab页收入明细）
+    update: '/api/user/update', // 个人信息 （修改）
     share: {
       qrcode: '/api/share/qrcode', // 个人信息 推荐给朋友二维码
       users: '/api/share/users' // 个人信息 推荐给朋友我发展的用户

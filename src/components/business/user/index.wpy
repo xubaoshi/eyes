@@ -7,16 +7,11 @@
   @connect({
     user: store.get('user')
   })
-  export default class ConsultIndex extends wepy.component {
+  export default class UserIndex extends wepy.component {
     methods = {
       handleGoInfo() {
         wepy.navigateTo({
           url: '/pages/patient/user/info'
-        })
-      },
-      handleGoAccount() {
-        wepy.navigateTo({
-          url: '/pages/patient/user/account'
         })
       },
       handleGoIncome() {
@@ -41,23 +36,20 @@
       },
       handleGoService() {}
     }
-    onLoad() {
-      console.log(this.user)
-    }
   }
 </script>
 
 <template>
   <view>
     <!-- S 个人信息 -->
-    <view class='user-panel' @tap='handleGoInfo'>
+    <view class='user-panel'>
       <image class='avatar' mode='aspectFill' src='{{user.avatar}}'></image>
       <text class='txt'>{{user.name}}</text>
     </view>
     <!-- E 个人信息 -->
     <!-- S 表单列表 -->
     <view class='ui-form'>
-      <view class='field' @tap='handleGoAccount'>
+      <view class='field'  @tap='handleGoInfo'>
         <view class='field-icon orange'>
           <text class='iconfont  icon-renminbi '></text>
         </view>

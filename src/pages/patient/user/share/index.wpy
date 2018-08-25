@@ -1,7 +1,6 @@
 <script>
   import wepy from 'wepy'
   import Qrcode from '@/components/wux/qrcode/qrcode'
-  import store from '@/store/utils'
   import userService from '@/api/user'
   export default class Index extends wepy.page {
     config = {

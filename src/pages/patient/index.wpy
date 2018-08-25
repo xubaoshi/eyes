@@ -1,14 +1,10 @@
 <script>
   import wepy from 'wepy'
-  // import {
-  //   connect
-  // } from 'wepy-redux'
   import store from '@/store/utils'
   import authService from '@/api/auth'
   import homeService from '@/api/home'
   import consultService from '@/api/consult'
   import userService from '@/api/user'
-  // import wxUtils from '@/utils/wx'
   import base from '@/mixins/base'
   import tabBar from '@/components/common/tabBar'
   import home from '@/components/business/home/index'

@@ -1,0 +1,18 @@
+<script>
+  import wepy from 'wepy'
+  export default class Cash extends wepy.page {
+    config = {
+      navigationBarTitleText: '提现历史'
+    }
+  }
+</script>
+
+<template>
+  <view>
+    提现历史
+  </view>
+</template>
+
+<style lang="less" scoped>
+  @import url('../../../../styles/module/m_bank.less');
+</style>

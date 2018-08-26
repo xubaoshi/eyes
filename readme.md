@@ -113,30 +113,30 @@ eslint（插件）
         --consult
             --add.wpy      //快速咨询第一步
             --pay.wpy      //支付页
-            --history.wpy  //历史记录（sorrowhere 完成8.17）
-            --evaluate.wpy //评价（sorrowhere 完成 8.16）
-            --detail.wpy   //详情（sorrowhere 完成8.18）
+            --history.wpy  //历史记录
+            --evaluate.wpy //评价
+            --detail.wpy   //详情
             --reply.wpy    //快速回复
             --consulter
               --add.wpy    //添加咨询人
               --list.wpy   //选择咨询人
         --doctor
-            --index.wpy    //找医生（sorrowhere 完成8.17）
-            --detail.wpy   //医生详情（sorrowhere 完成 8.17）
-            --evalateList.wpy //医生评价列表（sorrowhere 完成 8.16）
+            --index.wpy    //找医生
+            --detail.wpy   //医生详情
+            --evalateList.wpy //医生评价列表
         --user
-            --info.wpy     //个人信息（sorrowhere  完成8.21）
-            --name.wpy     //修改昵称（sorrowhere 完成8.21）
-            --income.wpy   //收入明细（sorrowhere 完成8.22）
-            --cash.wpy     //选择银行（提现）（sorrowhere 完成8.22）
+            --info.wpy     //个人信息
+            --name.wpy     //修改昵称
+            --income.wpy   //收入明细
           --share
-              --index.wpy  //推荐给朋友（sorrowhere 完成8.22）
-              --myUser.wpy //我发展的用户（sorrowhere 完成8.22）
-              --preview.wpy//我的推荐图片（sorrowhere 完成8.22）
-          --consulter
-              --add.wpy    //添加咨询人（sorrowhere）
-              --list.wpy   //咨询人信息（sorrowhere  完成8.21）
-      --index.wpy          //首页（sorrowhere 完成8.16）
+              --index.wpy  //推荐给朋友
+              --myUser.wpy //我发展的用户
+              --preview.wpy//我的推荐图片
+          --cash
+              --index.wpy   //提现页面
+              --bankAdd.wpy //银行添加
+              --history.wpy //提现历史
+      --index.wpy          //首页
 ```
 
 ## Mock 数据

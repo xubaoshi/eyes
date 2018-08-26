@@ -69,7 +69,7 @@
 <template>
   <view class="zan-actionsheet {{ zanActionsheet.show ? 'zan-actionsheet--show' : '' }}">
     <view class="zan-actionsheet__mask" catchtap="handleZanActionsheetMaskClick" data-close-on-click-overlay="{{ zanActionsheet.closeOnClickOverlay }}" data-component-id="{{ componentId }}"></view>
-    <cover-view class="zan-actionsheet__container">
+    <view class="zan-actionsheet__container">
       <!-- 实际按钮显示 -->
       <button wx:for="{{ zanActionsheet.actions }}" wx:for-index="index" wx:for-item="item" wx:key="{{ index }}-{{ item.name }}" catchtap="handleZanActionsheetBtnClick" data-component-id="{{ componentId }}" data-index="{{ index }}" data-type="{{ item.type }}"
         open-type="{{ item.openType }}" class="zan-btn zan-actionsheet__btn {{ item.loading ? 'zan-btn--loading' : '' }} {{ item.className }}">
@@ -82,7 +82,7 @@
       <view wx:if="{{ zanActionsheet.cancelText }}" class="zan-actionsheet__footer">
         <button class="zan-btn zan-actionsheet__btn" catchtap="handleZanActionsheetCancelBtnClick" data-component-id="{{ componentId }}">{{ zanActionsheet.cancelText }}</button>
       </view>
-    </cover-view>
+    </view>
   </view>
 </template>
 

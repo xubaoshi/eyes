@@ -172,7 +172,7 @@ clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ，
 
 ``` javascript
 
-  // 普通 get 请求
+  // 1.普通 get 请求
   {
     //返回码 成功0
     "code": 0,
@@ -183,7 +183,7 @@ clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ，
     }
   }
 
-  // 带翻页 get 请求， 页面懒加载使用
+  // 2.带翻页 get 请求， 页面懒加载使用
   {
     //返回码 成功0
     "code": 0,
@@ -206,7 +206,7 @@ clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ，
     }
   }
 
-  // 其他请求
+  // 3.其他请求(post等)
   {
     //返回码 成功0
     "code": 0,

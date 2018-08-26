@@ -24,7 +24,8 @@ export const patientApi = {
     detail: '/api/consult/detail', // 咨询详情（再次咨询）
     consulter: {
       list: '/api/consult/consulter/list', // 咨询人列表
-      add: '/api/consult/consulter/add' // 咨询人新增
+      add: '/api/consult/consulter/add', // 咨询人新增
+      detail: '/api/consult/consulter/detail' // 咨询人新增
     }
   },
   doctor: {

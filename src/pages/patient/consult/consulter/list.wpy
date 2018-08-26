@@ -20,7 +20,8 @@
     data = {
       selectItem: null,
       doctorId: '',
-      showRadio: true
+      showRadio: true,
+      path: '/pages/patient/consult/consulter/add'
     }
     onLoad(e) {
       // 从医生详情进入 doctorId 随 url 带入
@@ -52,7 +53,7 @@
       next() {
         if (this.selectItem) {
           wepy.navigateTo({
-            url: `/pages/patient/consult/pay?doctorId=${this.doctorId}`
+            url: `/pages/patient/consult/pay?doctorId=${this.doctorId}&userId=${this.selectItem.value}`
           })
         } else {
           tips.toast('请选择咨询人', null, 'none')
@@ -60,7 +61,7 @@
       },
       add() {
         wepy.navigateTo({
-          url: '/pages/patient/consult/consulter/add'
+          url: this.path
         })
       }
     }
@@ -71,7 +72,7 @@
   <view>
     <view class="zan-panel">
       <view class='user-list'>
-        <zanRadio :items.sync="items" :showRadio.sync='showRadio' @change.user='handleRadioChange'></zanRadio>
+        <zanRadio :items.sync="items" :detailPath='path' :showRadio.sync='showRadio' @change.user='handleRadioChange'></zanRadio>
       </view>
     </view>
     <view class="zan-panel add-wrap" wx:if='{{showRadio}}'>
@@ -136,7 +137,6 @@
     color: #ffffff;
     text-align: center;
   }
-
   .btn-add {
     margin-top: 20rpx;
   }

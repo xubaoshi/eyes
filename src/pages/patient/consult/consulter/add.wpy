@@ -9,21 +9,47 @@
       navigationBarTitleText: '咨询人信息'
     }
     data = {
+      id: '',
       dateEnd: lang.dateFormat(new Date(), 'yyyy-MM-dd'),
       date: undefined,
       relation: undefined,
       sex: undefined,
-      name: undefined,
+      userName: undefined,
       array: ['父母', '子女'],
       objectArray: [{
-          id: 0,
+          id: 1,
+          name: '自己'
+        },
+        {
+          id: 2,
           name: '父母'
         },
         {
-          id: 1,
+          id: 3,
+          name: '爱人'
+        },
+        {
+          id: 4,
           name: '子女'
+        },
+        {
+          id: 9,
+          name: '其他'
         }
       ]
+    }
+    async onLoad(e) {
+      if (e.id) {
+        const user = await consulterService.detail({
+          id: e.id
+        })
+        this.userName = user.userName
+        this.relation = this.objectArray.findIndex(obj => obj.id === parseInt(user.relation))
+        this.sex = parseInt(user.sex)
+        this.date = lang.dateFormat(user.date, 'yyyy-MM-dd')
+        this.id = e.id
+        this.$apply()
+      }
     }
     methods = {
       handleDateChange(e) {
@@ -39,11 +65,12 @@
         this.$apply()
       },
       async confirm(e) {
-        if (!this.relation) {
+        const relation = this.objectArray[this.relation]
+        if (!relation) {
           tips.toast('请选择与你的关系', null, 'none')
           return
         }
-        if (!e.detail.value.name) {
+        if (!e.detail.value.userName) {
           tips.toast('请输入姓名', null, 'none')
           return
         }
@@ -56,8 +83,9 @@
           return
         }
         await consulterService.consulterAdd({
-          relation: this.relation,
-          name: e.detail.value.name,
+          id: this.id,
+          relation: relation.id,
+          userName: e.detail.value.userName,
           sex: this.sex,
           date: this.date
         })
@@ -77,9 +105,9 @@
             <view class="weui-label">与的你关系</view>
           </view>
           <view class="weui-cell__bd">
-            <picker @change="handleRelationChange" value="{{relation}}" range="{{array}}">
+            <picker mode='selector' range-key='name' @change="handleRelationChange"  range="{{objectArray}}">
               <view class="picker">
-                {{relation ? array[relation] : '请选择'}}
+                {{objectArray[relation]['name']  ? objectArray[relation]['name'] : '请选择'}}
               </view>
             </picker>
             <text class='iconfont  icon-zhankai arrow'></text>
@@ -92,7 +120,7 @@
             <view class="weui-label">姓名</view>
           </view>
           <view class="weui-cell__bd">
-            <input class="weui-input" name="name" placeholder="请输入姓名" maxlength="5" value="{{name}}" />
+            <input class="weui-input" name="userName" placeholder="请输入姓名" maxlength="5" value="{{userName}}" />
           </view>
         </view>
         <!-- E 姓名 -->
@@ -105,13 +133,13 @@
             <view class="row">
               <radio-group class="radio-group row" @change="handleRadioChange" id="sex">
                 <label class="radio row">
-                                  <radio value="1" checked="{{sex == 1}}"/>
-                                  男
-                                </label>
+                                      <radio value="1" checked="{{sex == 1}}"/>
+                                      男
+                                    </label>
                 <label class="radio ml20 row">
-                                  <radio value="2" checked="{{sex == 2}}"/>
-                                    女
-                                </label>
+                                      <radio value="2" checked="{{sex == 2}}"/>
+                                        女
+                                    </label>
               </radio-group>
             </view>
           </view>

@@ -4,8 +4,9 @@
     config = {
       navigationBarTitleText: '支付'
     }
-    onLoad() {
-      console.log('this is home page')
+    onLoad(e) {
+      console.log(e.doctorId)
+      console.log(e.userId)
     }
   }
 </script>

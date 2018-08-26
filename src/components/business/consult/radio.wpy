@@ -6,40 +6,50 @@
         twoWay: true
       },
       type: {},
-      showRadio: {}
+      showRadio: {},
+      detailPath: {}
     }
     methods = {
       radioChange(e) {
-        this.$emit('change', e);
+        this.$emit('change', e)
+      },
+      handleGoDetail(value) {
+        if (!this.showRadio) {
+          wepy.navigateTo({
+            url: `${this.detailPath}?id=${value}`
+          })
+        }
       }
     }
   }
 </script>
 
 <template>
-  <radio-group class="zan-radio radio-class" bindchange="radioChange" wx:if="{{ items && items.length }}">
-    <label class="zan-radio__label {{ type === 'list' ? 'zan-radio__list-item' : 'zan-radio__item'}}" wx:for="{{ items }}" wx:key="{{ item.value }}" wx:for-item="item" wx:for-index="index">
-        <view class="zan-radio__icon-wrap" wx:if='{{showRadio}}'>
-          <view class="zan-radio__icon {{ item.disabled ? 'zan-radio--disabled' : '' }} {{ item.checked ? 'zan-radio--checked radio-color' : '' }}">
-            <view class="zan-radio__icon-inside"></view>
-          </view>
-          <radio
-            class="zan-radio__origin"
-            value="{{ item.value }}"
-            checked="{{ item.checked }}"
-            disabled="{{ item.disabled }}"
-          />
-        </view>
-        <view class="zan-radio__name">
-          <view class='name'>
-            {{item.relation}}
-          </view>
-          <view class='sub-name'>
-            {{item.subName}}
-          </view>
-          <text class='iconfont  icon-zhankai arrow' wx:if='{{!showRadio}}'></text>
-        </view>
-      </label>
+  <radio-group class="zan-radio radio-class" @change="radioChange" wx:if="{{ items && items.length }}">
+    <repeat for="{{ items }}">
+      <label @tap='handleGoDetail({{item.value}})' class="zan-radio__label {{ type === 'list' ? 'zan-radio__list-item' : 'zan-radio__item'}}">
+                <view class="zan-radio__icon-wrap" wx:if='{{showRadio}}'>
+                  <view class="zan-radio__icon {{ item.disabled ? 'zan-radio--disabled' : '' }} {{ item.checked ? 'zan-radio--checked radio-color' : '' }}">
+                    <view class="zan-radio__icon-inside"></view>
+                  </view>
+                  <radio
+                    class="zan-radio__origin"
+                    value="{{ item.value }}"
+                    checked="{{ item.checked }}"
+                    disabled="{{ item.disabled }}"
+                  />
+                </view>
+                <view class="zan-radio__name">
+                  <view class='name'>
+                    {{item.relation}}
+                  </view>
+                  <view class='sub-name'>
+                    {{item.subName}}
+                  </view>
+                  <text class='iconfont  icon-zhankai arrow' wx:if='{{!showRadio}}'></text>
+                </view>
+              </label>
+    </repeat>
   </radio-group>
 </template>
 
@@ -118,7 +128,7 @@
       display: inline-block;
       margin-left: 10px;
       .name {
-         font-size: 32rpx;
+        font-size: 32rpx;
       }
       .sub-name {
         color: #888888;

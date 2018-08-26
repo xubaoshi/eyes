@@ -135,8 +135,8 @@ eslint（插件）
           --cash
               --index.wpy   //提现页面
               --bankAdd.wpy //银行添加
-              --history.wpy //提现历史
-      --index.wpy          //首页
+              --history.wpy //提现历史(x1eo)
+      --index.wpy           //首页
 ```
 
 ## Mock 数据

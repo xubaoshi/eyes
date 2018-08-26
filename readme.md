@@ -170,7 +170,7 @@ clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ，
 
 ### 6. 后端请求格式
 
-``` json
+``` javascript
 
   // 普通 get 请求
   {

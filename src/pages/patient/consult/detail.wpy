@@ -8,7 +8,8 @@
     }
     data = {
       consult: {},
-      doctorId: ''
+      doctorId: '',
+      isCurent: false
     }
     computed = {
       list() {
@@ -28,6 +29,11 @@
     }
     onLoad(e) {
       this.doctorId = e.doctorId
+      if (e.isCurent) {
+        this.isCurent = true
+      } else {
+        this.isCurent = false
+      }
       this.$apply()
     }
     async onShow() {
@@ -42,7 +48,7 @@
       },
       handleGoConsultAdd(doctorId) {
         wepy.navigateTo({
-          url: `/pages/patient/consult/add?doctorId=${doctorId}`
+          url: `/pages/patient/consult/add?consultId=${this.consult.id}&isCurent=${this.isCurent}`
         })
       },
       handlePreview(item) {
@@ -86,8 +92,8 @@
               <image class='img' mode='aspectFill' src='{{item.content}}'></image>
             </view>
             <!-- <view wx:elif="{{item.type === 'vedio'}}"  class='txt txt-vedio'>
-                <video src="{{item.content}}" objectFit="cover" class='vedio' id="video{{index}}"  @error="videoErrorCallback"></video>
-              </view> -->
+                      <video src="{{item.content}}" objectFit="cover" class='vedio' id="video{{index}}"  @error="videoErrorCallback"></video>
+                    </view> -->
           </view>
         </block>
       </repeat>

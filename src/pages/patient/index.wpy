@@ -18,9 +18,9 @@
       user
     }
     data = {
-      currentIndex: 3,
+      currentIndex: 0,
       tabBars: [{
-        current: 0,
+        current: 1,
         pagePath: '/pages/patient/home/index',
         iconClass: 'icon-shouye',
         text: '爱眼康'
@@ -36,13 +36,25 @@
         isOutFlag: 1,
         text: '在线商城'
       }, {
-        current: 1,
+        current: 0,
         pagePath: '/pages/patient/user/index',
         iconClass: 'icon-wode-active',
         text: '个人中心'
       }]
     }
-    async onLoad() {
+    async onLoad(e) {
+      if (e.currentIndex) {
+        const currentIndex = parseInt(e.currentIndex)
+        this.currentIndex = currentIndex
+        this.tabBars.forEach((item, index) => {
+          if (currentIndex === index) {
+            item.current = 1
+          } else {
+            item.current = 0
+          }
+        })
+        this.$apply()
+      }
       // 登录检查
       await authService.login()
       // 初始化状态

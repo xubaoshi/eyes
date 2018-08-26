@@ -22,6 +22,8 @@ export const patientApi = {
     list: '/api/consult/list', // 我的咨询
     history: '/api/consult/history/list', // 历史咨询
     detail: '/api/consult/detail', // 咨询详情（再次咨询）
+    add: '/api/consult/add', // 咨询新增
+    price: '/api/consult/price', // 咨询费用
     consulter: {
       list: '/api/consult/consulter/list', // 咨询人列表
       add: '/api/consult/consulter/add', // 咨询人新增

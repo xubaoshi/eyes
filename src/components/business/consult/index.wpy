@@ -16,7 +16,7 @@
       },
       handleGoConsult(item) {
         wepy.navigateTo({
-          url: `/pages/patient/consult/detail?doctorId=${item.doctorId}`
+          url: `/pages/patient/consult/detail?doctorId=${item.doctorId}&isCurent=true`
         })
       }
     }

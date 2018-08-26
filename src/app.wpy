@@ -32,7 +32,6 @@
         // consult
         'pages/patient/consult/add',
         'pages/patient/consult/evaluate',
-        'pages/patient/consult/pay',
         'pages/patient/consult/detail',
         'pages/patient/consult/reply',
         'pages/patient/consult/history',
@@ -56,6 +55,7 @@
         'pages/patient/user/cash/history',
         'pages/patient/user/cash/bankAdd',
         'pages/patient/user/cash/index',
+        'pages/patient/consult/pay',
         'pages/patient/user/share/preview'
         // ================================
       ],

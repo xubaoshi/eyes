@@ -14,6 +14,7 @@
       placeholder: '请填写对医生工作的评价',
       selectItem: null,
       doctorId: '',
+      showRadio: true,
       items: [{
         value: '1',
         checked: false,
@@ -72,7 +73,7 @@
 <template>
   <form @submit="bindFormSubmit">
     <view class="add-wrap">
-      <zanRadio :items.sync="items" @change.user='handleRadioChange'></zanRadio>
+      <zanRadio :items.sync="items" :showRadio.sync='showRadio' @change.user='handleRadioChange'></zanRadio>
       <view class="conts">
         <textarea class="areas" placeholder='{{placeholder}}' minlength="10" maxlength="500" name="content"> </textarea>
       </view>

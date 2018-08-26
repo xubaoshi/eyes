@@ -39,8 +39,7 @@ export default class Pagination {
    */
   async next(args) {
     const param = {
-      from: this.start,
-      limit: this.count
+      pageSize: this.count
     }
     if (this.loading) {
       console.warn('page loading!')

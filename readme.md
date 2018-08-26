@@ -163,3 +163,46 @@ clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ，
 ### 4.微信开发者工具中缓存无法清除
 
 使用 `yarn run clean` 或 `npm run clean`， windows 系统下在 cmd 中命令是失效的，请打开 git bash 执行该命令
+
+### 5. `src/config.js` 
+
+该文件中 `baseUrl` 配置当前应用请求的 url 前缀，生产环境尚未配置，开发环境默认指向 [mock地址](https://www.easy-mock.com/mock/5b719f05ebd4a208cce29bb8)
+
+### 6. 后端请求格式
+
+``` json
+
+  // 普通 get 请求
+  {
+    "code": 0,    // 返回码 成功 0
+    "errMsg": "mock", // 可能用来展示给客户用作提示（如果 code 不为 0）
+    "data": {
+      "phone": "13212341234"
+    }
+  }
+
+  // 带翻页 get 请求， 页面懒加载使用
+  {
+    "code": 0, // 返回码 成功 0
+    "errMsg": "mock", // 可能用来展示给客户用作提示（如果 code 不为 0）
+    "data": {
+      "data": [{       // 翻页返回
+        "doctorId": "1",
+        "name": "王大陆1",
+      }],
+      "pageNo": "1", // 第几页
+      "pageSize": "10", // 每页数量
+      "records": "12", // 共多少数量
+      "pages": "2" // // 共多少页
+    }
+  }
+
+  // 其他请求
+  {
+    "code": 0,    // 返回码 成功 0
+    "errMsg": "mock", // 消息 可能用来展示给客户用作提示（如果 code 不为 0）
+    "data": {
+    }
+  }
+
+```

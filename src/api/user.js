@@ -3,6 +3,7 @@ import base from './base'
 import { patientApi } from '@/config'
 import store from '@/store/utils'
 import lang from '@/utils/lang'
+import Page from '@/utils/page'
 
 export default class user extends base {
   // 用户信息
@@ -37,13 +38,13 @@ export default class user extends base {
   }
 
   // 收入明细
-  static async income(param) {
+  static income(param) {
     const url = `${this.baseUrl}${patientApi.user.income}`
-    const arr = await this.get(url, param)
-    arr.forEach(item => {
-      item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
-    })
-    return arr
+    return new Page(url, this.processIncomeData.bind(this))
+  }
+  // 处理收入明细数据
+  static processIncomeData(item) {
+    item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
   }
 
   // 提现请求

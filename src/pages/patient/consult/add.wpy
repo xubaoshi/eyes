@@ -52,11 +52,12 @@
               {
                 type: 'image',
                 name: '上传图片'
-              },
-              {
-                type: 'vedio',
-                name: '上传视频'
               }
+              // ,
+              // {
+              //   type: 'vedio',
+              //   name: '上传视频'
+              // }
             ]
           }).then(result => {
             if (result.type === 'photo') {
@@ -142,7 +143,7 @@
           <view class='upload-item btn'>
             <image src='{{item.url}}' wx:if="{{ item.type === 'image' }}" />
             <view class='vedio-wrap' wx:else="{{ item.type === 'video' }}">
-              <video id="video{{index}}" src='{{item.url}}'></video>
+              <video id="video{{index}}" objectFit="cover" src='{{item.url}}'></video>
             </view>
             <view class="upload-item-remove" data-file="{{ item }}" data-index="{{ index }}" catchtap="onRemove({{index}})">
               <text>x</text>

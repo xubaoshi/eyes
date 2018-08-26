@@ -174,8 +174,10 @@ clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ，
 
   // 普通 get 请求
   {
-    "code": 0, // 返回码 成功 0
-    "errMsg": "mock",//可能用来展示给客户用作提示（如果 code 不为 0）
+    //返回码 成功0
+    "code": 0,
+    //如果code不为0，提示信息
+    "errMsg": "mock",
     "data": {
       "phone": "13212341234"
     }
@@ -183,24 +185,33 @@ clone 代码后 进入到项目执行命令 `yarn run dev` 或 `npm run dev` ，
 
   // 带翻页 get 请求， 页面懒加载使用
   {
-    "code": 0, //返回码成功 0
-    "errMsg": "mock", //可能用来展示给客户用作提示（如果 code 不为 0）
+    //返回码 成功0
+    "code": 0,
+    //如果code不为0，提示信息
+    "errMsg": "mock",
     "data": {
-      "data": [{// 翻页返回
+      //翻页数据
+      "data": [{
         "doctorId": "1",
         "name": "王大陆1",
       }],
-      "pageNo": "1",//第几页
-      "pageSize": "10",//每页数量
-      "records": "12",//共多少数量
-      "pages": "2" //共多少页
+      //第几页
+      "pageNo": "1",
+      //每页数量
+      "pageSize": "10",
+      //总数
+      "records": "12",
+      //总页数
+      "pages": "2"
     }
   }
 
   // 其他请求
   {
-    "code": 0,    //返回码成功 0
-    "errMsg": "mock", //消息可能用来展示给客户用作提示（如果 code 不为 0）
+    //返回码 成功0
+    "code": 0,
+    //如果code不为0，提示信息
+    "errMsg": "mock",
     "data": {
     }
   }

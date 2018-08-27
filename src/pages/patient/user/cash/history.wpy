@@ -9,7 +9,22 @@
 
 <template>
   <view>
-    提现历史
+    <view class='cash-record'>
+      <view class='cash-rcd-item clear'>
+        <view class='cash-rcd-bd'>
+          招商银行(0091)提现<text class='cash-rcd-status'>提现中</text>
+          <view class='cash-rcd-time'>2018-08-25 22:10:10</view>
+        </view>
+        <view class='cash-rcd-num'>+400</view>
+      </view>
+      <view class='cash-rcd-item clear'>
+        <view class='cash-rcd-bd'>
+          招商银行(0091)提现<text class='cash-rcd-status'>提现中</text>
+          <view class='cash-rcd-time'>2018-08-25 22:10:10</view>
+        </view>
+        <view class='cash-rcd-num'>+400</view>
+      </view>
+    </view>
   </view>
 </template>
 

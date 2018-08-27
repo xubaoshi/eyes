@@ -40,11 +40,7 @@ export default class user extends base {
   // 收入明细
   static income(param) {
     const url = `${this.baseUrl}${patientApi.user.income}`
-    return new Page(url, this.processIncomeData.bind(this))
-  }
-  // 处理收入明细数据
-  static processIncomeData(item) {
-    item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
+    return new Page(url, this.processData.bind(this))
   }
 
   // 提现请求
@@ -65,15 +61,19 @@ export default class user extends base {
     return arr
   }
   // 提现历史
-  static async cashHistory(param) {
+  static cashHistory(param) {
     const url = `${this.baseUrl}${patientApi.user.cash.history}`
-    const arr = await this.get(url, param)
-    return arr
+    return new Page(url, this.processData.bind(this))
   }
 
   // 新增提现银行
   static async addCard(param) {
     const url = `${this.baseUrl}${patientApi.user.cash.addCard}`
     return await this.post(url, param)
+  }
+
+  // 处理数据
+  static processData(item) {
+    item['dateFormat'] = lang.dateFormat(item.date, 'yyyy-MM-dd')
   }
 }

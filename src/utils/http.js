@@ -18,8 +18,8 @@ export default class http {
       return res.data.data
     } else {
       const err = this.requestException(res)
-      if (err.message) {
-        tips.toast(err.message, null, 'none')
+      if (err.errMsg) {
+        tips.toast(err.errMsg, null, 'none')
       }
       throw err
     }
